@@ -47,7 +47,29 @@ export default function Home(){
   {/* navbar */}
   <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-xl">
 <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
-  
+  <a href="#home" className="flex items-center gap-3">
+    <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
+      <Building2 size={21}/>
+      </div>
+      <div>
+        <div className="text-1g font-bold tracking-[0.2em]">
+NEXA<span className="text-[#d6ff3f]">Build</span>
+</div>
+<div className="text-[9px] tracking-[0.35em] text-white/40">
+Construction</div>
+</div>
+</a>
+
+<div className="hidden items-center gap-8 md:flex">
+  {["Home","About","Services","Projects","Contact"].map(
+(item)=>(
+  <a
+  key={item}
+  href={`#${item.toLowerCaase()}`}
+)  
+)
+  )}
+
       </>
   )
 }
