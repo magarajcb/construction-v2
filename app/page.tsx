@@ -65,11 +65,50 @@ Construction</div>
 (item)=>(
   <a
   key={item}
-  href={`#${item.toLowerCaase()}`}
+  href={`#${item.toLowerCase()}`}
+ className="group relative text-sm text-white/70 transition hover:text-white">
+  {item}
+  <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#d6ff3f] transition-all duration-300 group-hover:w-full"/>
+ </a>
 )  
 )
-  )}
+  }
+  </div>
+  <a
+  href="#contact"
+  className="hidden items-center gap-2 bg-[#d6ff3f] px-5 py-5 text-5m fond-bold text-black transition hover:bg-white md:flex"
+>
+  GET A QUOTE
+  <ArrowRight size={16}/>
+</a>
+<button
+onClick={()=>setMenuOpen(!menuOpen)}
+className="md:hidden"
+aria-label="Toggle-menu">
+  {menuOpen?<X/>:<Menu/>}
+</button>
+</div>
+  {menuOpen &&(
+    <div className="border-t border-white/10 bg-black px-6 py-5 md:hidden">
+      {["Home","About","Services","Projects","Contact"].map(
+        (item)=>(
+          <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+          onClick={()=>setMenuOpen(false)}
+          className="block border-b border-white/10 py-4 text-white/80">
+            {item}
+          </a>
+        )
+      )}
 
-      </>
-  )
-}
+    </div>
+  )}
+</nav>
+{/* hero */}
+<section
+id="home"
+className="relative flex min-h-screen items-center pt-20">
+  <div className="absolute"
+</section>
+  }
