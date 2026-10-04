@@ -166,6 +166,44 @@ className="relative flex min-h-screen items-center pt-20">
           </motion.div>
 
          </div>
+         <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="relative flex min-h-[500px] items-center justify-center">
+              <div className="absolute h-[380px] w-[380px] border border-[#d6ff3f]/20"/>
+              <div className="absolute  inset-0 bg-[linear-gradient(135deg,transperent_35%,rgba(214,255,63,0.12)_35%,transparent_65%)]"/>
+              <div className="absolute bottom-0 left-0 right-0 h-[-70%] bg-gradient-to-t from-[#d6ff3f]/10 to-transparent"/>
+              <div className="absolute bottom-12 left-8">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+                Featured Project
+                </p>
+                <h2 className="text-3xl font-bold mt-2">
+                  Architecture
+                  <br/>
+                  <span className="text-[#d6ff3f]">
+                    Reimagined
+                  </span>
+                </h2>
+              </div>
+              <div className="absolute right-5 top-5 text-xs text-white/30">
+              01/03
+              </div>
+              <div className="absolute bottom-6 left-0 border border-white/10 bg-black/80 px-5 py-4 backdrop-blur-md">
+              <div className="flex items-center gap-3">
+                <Ruler size={18} className="text-[#d6ff3f]"/>
+                <div>
+                    <p className="text-xs text-white/40">
+                    Current project</p>
+                    <p className="font-semibold">
+Kallakurichi Residence
+                    </p>
+                </div>
+              </div>
+              </div>
+            </motion.div>
   </div>
+  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercasse tracking-[0.4em] text-white/30">
+  Scroll to explore</div>
 </section>
   }
