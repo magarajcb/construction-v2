@@ -156,8 +156,12 @@ className="relative flex min-h-screen items-center pt-20">
               Explore Projects
               <ArrowRight
               size={18}
-              className="transition-transform group-hover:translate-x-l"
+              className="transition-transform group-hover:translate-x-l"/>
             </a>
+            <button className="flex items-center gap-3 border border-white/20 px-7 py-4 font-bold transition hover:border-white hover:bg-white hover:text-black">
+              <Play size={17} />
+                WATCH OUR STORY
+            </button>
 
           </motion.div>
 
