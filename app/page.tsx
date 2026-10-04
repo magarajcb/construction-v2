@@ -109,6 +109,59 @@ aria-label="Toggle-menu">
 <section
 id="home"
 className="relative flex min-h-screen items-center pt-20">
-  <div className="absolute"
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(210,255,63,0.12),transparent_30%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_25%]"/>
+  <div className="absolute right-[-10%] top-[15%] h-[600px] w-[600px] rounded-full border border-white/5" />
+  <div className="absolute right-[-5%] top-[20%] h-[500px] w-[500px] rounded-full border border-[#d6ff3f]/10" />
+  <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
+         {/* Hero Text */}
+         <div className="flex flex-col justify-center">
+          <motion.div
+          initial={{opacity:0,y:20}}
+          animate={{opacity:1,y:0}}
+          transition={{duration:0.7}}
+          className="mb-8 flex items-center gap-3">
+            <span className="h-px w-12 bg-[#d6ff3f]"/>
+            <span className="text-xs font -semibold uppercase tracking-[0.3em] text-[#d6ff3f]">
+              Building Beyond Boundries 
+            </span>
+          </motion.div>
+          <motion.h1
+          initial={{opacity:0,y:30}}
+          animate={{opacity:1,y:0}}
+          transition={{duration:0.8,delay:0.1}}
+          className="max-w-4xl text-6xl font-black leading-[0.9] tracking-[-0.05em] sm:text-7xl lg:text-8xl">
+            WE BUILD 
+            <br/>
+            <span className="text-[#d6ff3f]">
+              THE FUTURE
+            </span>
+          </motion.h1>
+          <motion.p
+          initial={{opacity:0,y:20}}
+          animate={{opacity:1,y:0}}
+          transition={{duration:0.7,delay:0.3}}
+          className="mt-8 max-w-xl text=lg leading-8 text-white/50">
+            From ambitious architectural concepts to extraordinary
+            completed spaces, we transform ideas into structures built
+            to last.
+          </motion.p>
+          <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-10 flex flex-wrap gap-4">
+            <a
+            href="#projects"
+            className="group flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white">
+              Explore Projects
+              <ArrowRight
+              size={18}
+              className="transition-transform group-hover:translate-x-l"
+            </a>
+
+          </motion.div>
+
+         </div>
+  </div>
 </section>
   }
