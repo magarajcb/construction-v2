@@ -464,7 +464,9 @@ export default function Home() {
                   </p>
 
                   <div className="mt-6 flex h-0 items-center gap-2 overflow-hidden text-sm font-bold text-[#d6ff3f] transition-all duration-300 group-hover:h-6">
-                    VIEW PROJECT
+                   <Link href={`/projects/${project.slug}`}>
+  VIEW PROJECT →
+</Link>
                     <ArrowRight size={15} />
                   </div>
 
