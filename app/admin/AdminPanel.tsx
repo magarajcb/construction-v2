@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowLeft, Plus, Image as ImageIcon } from "lucide-react";
+import { LogOut } from "lucide-react";
 
 export default function AdminPage() {
   const [form, setForm] = useState({
@@ -48,6 +49,13 @@ export default function AdminPage() {
       slug: createSlug(title),
     });
   }
+  async function handleLogout() {
+  await fetch("/api/admin/logout", {
+    method: "POST",
+  });
+
+  window.location.href = "/admin/login";
+}
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -123,13 +131,24 @@ export default function AdminPage() {
             </p>
           </div>
 
-          <a
-            href="/"
-            className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-[#d6ff3f] hover:text-[#d6ff3f]"
-          >
-            <ArrowLeft size={16} />
-            WEBSITE
-          </a>
+         <div className="flex items-center gap-3">
+  <a
+    href="/"
+    className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-[#d6ff3f] hover:text-[#d6ff3f]"
+  >
+    <ArrowLeft size={16} />
+    WEBSITE
+  </a>
+
+  <button
+    type="button"
+    onClick={handleLogout}
+    className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-red-400 hover:text-red-400"
+  >
+    <LogOut size={16} />
+    LOGOUT
+  </button>
+</div>
 
         </div>
 
