@@ -1,8 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowLeft, Plus, Image as ImageIcon } from "lucide-react";
-import { LogOut } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  ArrowLeft,
+  Plus,
+  Image as ImageIcon,
+  LogOut,
+  Trash2,
+} from "lucide-react";
+
 
 export default function AdminPage() {
   const [form, setForm] = useState({
@@ -20,7 +26,61 @@ export default function AdminPage() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [projects, setProjects] = useState<any[]>([]);
+  useEffect(() => {
+  loadProjects();
+}, []);
 
+async function loadProjects() {
+  try {
+    const response = await fetch("/api/projects");
+
+    if (!response.ok) {
+      throw new Error("Failed to load projects");
+    }
+
+    const data = await response.json();
+
+    setProjects(data);
+  } catch (error) {
+    console.error("LOAD PROJECTS ERROR:", error);
+  }
+}
+async function deleteProject(id: string) {
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this project?"
+  );
+
+  if (!confirmed) return;
+
+  try {
+    const response = await fetch("/api/projects", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to delete project");
+    }
+
+    setProjects((currentProjects) =>
+      currentProjects.filter((project) => project._id !== id)
+    );
+
+    setMessage("Project deleted successfully!");
+  } catch (error) {
+    setMessage(
+      error instanceof Error
+        ? error.message
+        : "Failed to delete project"
+    );
+  }
+}
   function handleChange(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -172,6 +232,55 @@ export default function AdminPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            <section className="mt-10 border border-white/10 bg-[#0d0d0d] p-8">
+  <div className="mb-8">
+    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+      PROJECT MANAGEMENT
+    </p>
+
+    <h2 className="mt-3 text-2xl font-bold">
+      Existing Projects
+    </h2>
+
+    <p className="mt-2 text-sm text-white/40">
+      Manage projects currently displayed on the website.
+    </p>
+  </div>
+
+  <div className="space-y-4">
+    {projects.length === 0 ? (
+      <p className="text-white/40">
+        No projects found.
+      </p>
+    ) : (
+      projects.map((project) => (
+        <div
+          key={project._id}
+          className="flex items-center justify-between border border-white/10 bg-black p-5"
+        >
+          <div>
+            <h3 className="font-bold">
+              {project.title}
+            </h3>
+
+            <p className="mt-1 text-sm text-white/40">
+              {project.category} · {project.location}
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => deleteProject(project._id)}
+            className="flex items-center gap-2 border border-red-500/30 px-4 py-2 text-sm font-bold text-red-400 transition hover:bg-red-500 hover:text-white"
+          >
+            <Trash2 size={16} />
+            DELETE
+          </button>
+        </div>
+      ))
+    )}
+  </div>
+</section>
 
             {/* TITLE + SLUG */}
             <div className="grid gap-6 md:grid-cols-2">
