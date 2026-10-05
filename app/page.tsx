@@ -32,35 +32,52 @@ const services = [
   {
     number: "01",
     title: "Residential Construction",
+    description:
+      "Complete residential construction services focused on quality, durability, and modern living.",
+    slug: "residential-construction",
     icon: HomeIcon,
   },
   {
     number: "02",
     title: "Commercial Construction",
+    description:
+      "Reliable commercial construction solutions designed for functionality, efficiency, and long-term value.",
+    slug: "commercial-construction",
     icon: Building2,
   },
   {
     number: "03",
     title: "Architecture & Design",
+    description:
+      "Thoughtful architectural planning and design that combines creativity, functionality, and modern aesthetics.",
+    slug: "architecture-design",
     icon: Ruler,
   },
   {
     number: "04",
     title: "Interior Works",
+    description:
+      "Complete interior solutions with premium finishes, practical layouts, and attention to every detail.",
+    slug: "interior-works",
     icon: Sofa,
   },
   {
     number: "05",
     title: "Renovation",
+    description:
+      "Transforming existing spaces through carefully planned renovation and modern upgrades.",
+    slug: "renovation",
     icon: Hammer,
   },
   {
     number: "06",
     title: "Project Management",
+    description:
+      "End-to-end project coordination to keep construction organized, efficient, and on schedule.",
+    slug: "project-management",
     icon: ClipboardList,
   },
 ];
-
 const reasons = [
   "Experienced construction professionals",
   "Quality materials and workmanship",
@@ -504,44 +521,50 @@ export default function Home() {
 
   {/* Service cards */}
   <div className="grid grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
-    {services.map((service) => {
-      const Icon = service.icon;
+    
+       {services.map((service) => {
+  const Icon = service.icon;
 
-      return (
-        <motion.div
-          key={service.number}
-          whileHover={{ y: -4 }}
-          transition={{ duration: 0.25 }}
-          className="group relative min-h-[240px] border-b border-r border-white/10 bg-[#080808] p-8 transition-all duration-300 hover:bg-[#d6ff3f]"
-        >
-          {/* Number */}
-          <span className="text-sm font-medium text-[#d6ff3f] transition-colors duration-300 group-hover:text-black">
-            {service.number}
-          </span>
+  return (  
+    <Link
+      key={service.number}
+      href={`/services/${service.slug}`}
+      className="block"
+    >
+      <motion.div
+        whileHover={{ y: -4 }}
+        transition={{ duration: 0.25 }}
+        className="group relative min-h-[240px] border-b border-r border-white/10 bg-[#080808] p-8 transition-all duration-300 hover:bg-[#d6ff3f]"
+      >
+        {/* Number */}
+        <span className="text-sm font-medium text-[#d6ff3f] transition-colors duration-300 group-hover:text-black">
+          {service.number}
+        </span>
 
-          {/* Icon */}
-          <div className="mt-10">
-            <Icon
-              size={34}
-              strokeWidth={1.5}
-              className="text-[#d6ff3f] transition-colors duration-300 group-hover:text-black"
-            />
-          </div>
-
-          {/* Service title */}
-          <h3 className="mt-6 max-w-[260px] text-xl font-bold text-white transition-colors duration-300 group-hover:text-black">
-            {service.title}
-          </h3>
-
-          {/* Arrow */}
-          <ArrowRight
-            size={26}
+        {/* Icon */}
+        <div className="mt-10">
+          <Icon
+            size={34}
             strokeWidth={1.5}
-            className="absolute bottom-7 right-7 text-white transition-all duration-300 group-hover:translate-x-2 group-hover:text-black"
+            className="text-[#d6ff3f] transition-colors duration-300 group-hover:text-black"
           />
-        </motion.div>
-      );
-    })}
+        </div>
+
+        {/* Service title */}
+        <h3 className="mt-6 max-w-[260px] text-xl font-bold text-white transition-colors duration-300 group-hover:text-black">
+          {service.title}
+        </h3>
+
+        {/* Arrow */}
+        <ArrowRight
+          size={26}
+          strokeWidth={1.5}
+          className="absolute bottom-7 right-7 text-white transition-all duration-300 group-hover:translate-x-2 group-hover:text-black"
+        />
+      </motion.div>
+    </Link>
+  );
+})}
   </div>
 </section>
 
