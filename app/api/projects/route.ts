@@ -11,14 +11,27 @@ export async function GET() {
       .lean();
 
     return NextResponse.json(projects);
-  } catch (error) {
-    console.error("GET PROJECTS ERROR:", error);
+   }
+  //  catch (error) {
+  //   console.error("GET PROJECTS ERROR:", error);
 
-    return NextResponse.json(
-      { message: "Failed to fetch projects" },
-      { status: 500 },
-    );
-  }
+  //   return NextResponse.json(
+  //     { message: "Failed to fetch projects" },
+  //     { status: 500 },
+  //   );
+  // }
+  catch (error) {
+  console.error("GET PROJECTS ERROR:", error);
+
+  return NextResponse.json(
+    {
+      message: "Failed to fetch projects",
+      error: error instanceof Error ? error.message : String(error),
+    },
+    { status: 500 }
+  );
+}
+  
 }
 
 export async function POST(request: NextRequest) {
