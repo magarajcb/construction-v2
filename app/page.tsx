@@ -10,7 +10,8 @@ import {
   Ruler,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 const stats = [
   { value: "120+", label: "Projects Delivered" },
@@ -19,26 +20,7 @@ const stats = [
   { value: "99%", label: "Customer Satisfaction" },
 ];
 
-const projects = [
-  {
-    number: "01",
-    title: "Modern Residence",
-    location: "Madurai, Tamil Nadu",
-    category: "Residential",
-  },
-  {
-    number: "02",
-    title: "Commercial Complex",
-    location: "Chennai, Tamil Nadu",
-    category: "Commercial",
-  },
-  {
-    number: "03",
-    title: "Luxury Villa",
-    location: "Coimbatore, Tamil Nadu",
-    category: "Residential",
-  },
-];
+
 
 const services = [
   "Residential Construction",
@@ -58,6 +40,13 @@ const reasons = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [projects, setProjects] = useState<any[]>([]);
+  useEffect(() => {
+  fetch("/api/projects")
+    .then((res) => res.json())
+    .then((data) => setProjects(data))
+    .catch((error) => console.error("Failed to load projects:", error));
+}, []);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#080808] text-white">
@@ -134,137 +123,101 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section
-        id="home"
-        className="relative flex min-h-screen items-center pt-20"
+        {/* HERO */}
+<section
+  id="home"
+  className="relative flex min-h-screen items-center overflow-hidden pt-20"
+>
+  {/* Hero background image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: "url('/images/hero/hero-construction.jpeg')",
+    }}
+  />
+
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black/65" />
+
+  {/* Lime glow */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(214,255,63,0.12),transparent_30%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_25%)]" />
+
+  {/* Decorative circles */}
+  <div className="absolute right-[-10%] top-[15%] h-[600px] w-[600px] rounded-full border border-white/5" />
+
+  <div className="absolute right-[-5%] top-[20%] h-[500px] w-[500px] rounded-full border border-[#d6ff3f]/10" />
+
+  {/* Main hero content */}
+  <div className="relative z-10 mx-auto flex w-full max-w-7xl px-6 py-24 lg:px-10">
+    <div className="flex max-w-3xl flex-col justify-center">
+
+      {/* Eyebrow */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className="mb-8 flex items-center gap-3"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(214,255,63,0.12),transparent_30%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_25%)]" />
+        <span className="h-px w-12 bg-[#d6ff3f]" />
 
-        <div className="absolute right-[-10%] top-[15%] h-[600px] w-[600px] rounded-full border border-white/5" />
+        <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d6ff3f]">
+          Building Beyond Boundaries
+        </span>
+      </motion.div>
 
-        <div className="absolute right-[-5%] top-[20%] h-[500px] w-[500px] rounded-full border border-[#d6ff3f]/10" />
+      {/* Heading */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        className="text-6xl font-black leading-[0.9] tracking-[-0.05em] sm:text-7xl lg:text-8xl"
+      >
+        WE BUILD
+        <br />
+        <span className="text-[#d6ff3f]">
+          THE FUTURE.
+        </span>
+      </motion.h1>
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-16 px-6 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
+      {/* Description */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="mt-8 max-w-xl text-lg leading-8 text-white/70"
+      >
+        From ambitious architectural concepts to extraordinary
+        completed spaces, we transform ideas into structures built
+        to last.
+      </motion.p>
 
-          <div className="flex flex-col justify-center">
+      {/* Button */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="mt-10 flex flex-wrap gap-4"
+      >
+        <a
+          href="#projects"
+          className="group flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white"
+        >
+          EXPLORE PROJECTS
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="mb-8 flex items-center gap-3"
-            >
-              <span className="h-px w-12 bg-[#d6ff3f]" />
+          <ArrowRight
+            size={18}
+            className="transition-transform group-hover:translate-x-1"
+          />
+        </a>
+      </motion.div>
+    </div>
+  </div>
 
-              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d6ff3f]">
-                Building Beyond Boundaries
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="max-w-4xl text-6xl font-black leading-[0.9] tracking-[-0.05em] sm:text-7xl lg:text-8xl"
-            >
-              WE BUILD
-              <br />
-              <span className="text-[#d6ff3f]">
-                THE FUTURE.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="mt-8 max-w-xl text-lg leading-8 text-white/50"
-            >
-              From ambitious architectural concepts to extraordinary
-              completed spaces, we transform ideas into structures built
-              to last.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-10 flex flex-wrap gap-4"
-            >
-              <a
-                href="#projects"
-                className="group flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white"
-              >
-                EXPLORE PROJECTS
-                <ArrowRight
-                  size={18}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </a>
-
-              <button className="flex items-center gap-3 border border-white/20 px-7 py-4 font-bold transition hover:border-white hover:bg-white hover:text-black">
-                <Play size={17} />
-                WATCH OUR STORY
-              </button>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative flex min-h-[500px] items-center justify-center"
-          >
-            <div className="absolute h-[380px] w-[380px] border border-[#d6ff3f]/20" />
-
-            <div className="relative h-[430px] w-[330px] overflow-hidden bg-gradient-to-br from-[#303030] via-[#151515] to-[#080808]">
-
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_35%,rgba(214,255,63,0.12)_35%,transparent_65%)]" />
-
-              <div className="absolute bottom-0 left-0 right-0 h-[70%] bg-gradient-to-t from-[#d6ff3f]/10 to-transparent" />
-
-              <div className="absolute bottom-12 left-8">
-                <p className="text-xs uppercase tracking-[0.3em] text-white/40">
-                  Featured Project
-                </p>
-
-                <h2 className="mt-2 text-3xl font-bold">
-                  Architecture
-                  <br />
-                  <span className="text-[#d6ff3f]">
-                    Reimagined.
-                  </span>
-                </h2>
-              </div>
-
-              <div className="absolute right-5 top-5 text-xs text-white/30">
-                01 / 03
-              </div>
-            </div>
-
-            <div className="absolute bottom-6 left-0 border border-white/10 bg-black/80 px-5 py-4 backdrop-blur-md">
-              <div className="flex items-center gap-3">
-                <Ruler size={18} className="text-[#d6ff3f]" />
-
-                <div>
-                  <p className="text-xs text-white/40">
-                    Current Project
-                  </p>
-
-                  <p className="font-semibold">
-                    Madurai Residence
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.4em] text-white/30">
-          Scroll to explore
-        </div>
-      </section>
-
+  {/* Scroll indicator */}
+  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.4em] text-white/50">
+    Scroll to explore
+  </div>
+</section>
       {/* STATS */}
       <section className="border-y border-white/10 bg-[#0d0d0d]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
@@ -402,19 +355,27 @@ export default function Home() {
 
             {projects.map((project, index) => (
               <motion.article
-                key={project.number}
+             key={project._id}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.12 }}
                 className="group relative h-[460px] overflow-hidden border border-white/10 bg-[#151515]"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#303030] via-[#151515] to-black transition duration-700 group-hover:scale-105" />
+               {project.coverImage ? (
+  <img
+    src={project.coverImage}
+    alt={project.title}
+    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+  />
+) : (
+  <div className="absolute inset-0 bg-gradient-to-br from-[#303030] via-[#151515] to-black transition duration-700 group-hover:scale-105" />
+)}
 
                 <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_45%,rgba(214,255,63,0.08))]" />
 
                 <div className="absolute left-6 top-6 text-sm text-white/30">
-                  {project.number}
+                {String(index + 1).padStart(2, "0")}
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-7">
