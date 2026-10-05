@@ -5,11 +5,17 @@ import {
   ArrowRight,
   Building2,
   CheckCircle2,
+  ClipboardList,
+  Hammer,
+   Home as HomeIcon,
   Menu,
   Play,
   Ruler,
+  Sofa,
   X,
+   MapPin, Phone, Mail 
 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
@@ -23,12 +29,36 @@ const stats = [
 
 
 const services = [
-  "Residential Construction",
-  "Commercial Construction",
-  "Architecture & Design",
-  "Interior Works",
-  "Renovation",
-  "Project Management",
+  {
+    number: "01",
+    title: "Residential Construction",
+    icon: HomeIcon,
+  },
+  {
+    number: "02",
+    title: "Commercial Construction",
+    icon: Building2,
+  },
+  {
+    number: "03",
+    title: "Architecture & Design",
+    icon: Ruler,
+  },
+  {
+    number: "04",
+    title: "Interior Works",
+    icon: Sofa,
+  },
+  {
+    number: "05",
+    title: "Renovation",
+    icon: Hammer,
+  },
+  {
+    number: "06",
+    title: "Project Management",
+    icon: ClipboardList,
+  },
 ];
 
 const reasons = [
@@ -447,49 +477,73 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section
-        id="services"
-        className="mx-auto max-w-7xl px-6 py-32 lg:px-10"
-      >
-        <div className="mb-16">
+      {/* SERVICES */}
+<section
+  id="services"
+  className="mx-auto max-w-7xl px-6 py-32 lg:px-10"
+>
+  {/* Section heading */}
+  <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+    <div>
+      <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+        What We Do
+      </p>
 
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
-            What We Do
-          </p>
+      <h2 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
+        OUR SERVICES
+      </h2>
+    </div>
 
-          <h2 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
-            OUR SERVICES
-          </h2>
+    <button className="flex w-fit items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]">
+      VIEW ALL SERVICES
+      <ArrowRight size={16} />
+    </button>
+  </div>
 
-        </div>
+  {/* Service cards */}
+  <div className="grid grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+    {services.map((service) => {
+      const Icon = service.icon;
 
-        <div className="grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+      return (
+        <motion.div
+          key={service.number}
+          whileHover={{ y: -4 }}
+          transition={{ duration: 0.25 }}
+          className="group relative min-h-[240px] border-b border-r border-white/10 bg-[#080808] p-8 transition-all duration-300 hover:bg-[#d6ff3f]"
+        >
+          {/* Number */}
+          <span className="text-sm font-medium text-[#d6ff3f] transition-colors duration-300 group-hover:text-black">
+            {service.number}
+          </span>
 
-          {services.map((service, index) => (
-            <div
-              key={service}
-              className="group border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
-            >
+          {/* Icon */}
+          <div className="mt-10">
+            <Icon
+              size={34}
+              strokeWidth={1.5}
+              className="text-[#d6ff3f] transition-colors duration-300 group-hover:text-black"
+            />
+          </div>
 
-              <div className="mb-12 text-sm text-[#d6ff3f] group-hover:text-black">
-                0{index + 1}
-              </div>
+          {/* Service title */}
+          <h3 className="mt-6 max-w-[260px] text-xl font-bold text-white transition-colors duration-300 group-hover:text-black">
+            {service.title}
+          </h3>
 
-              <h3 className="text-2xl font-bold">
-                {service}
-              </h3>
+          {/* Arrow */}
+          <ArrowRight
+            size={26}
+            strokeWidth={1.5}
+            className="absolute bottom-7 right-7 text-white transition-all duration-300 group-hover:translate-x-2 group-hover:text-black"
+          />
+        </motion.div>
+      );
+    })}
+  </div>
+</section>
 
-              <div className="mt-8 flex justify-end">
-                <ArrowRight className="transition-transform group-hover:translate-x-2" />
-              </div>
-
-            </div>
-          ))}
-
-        </div>
-      </section>
-
-      {/* GALLERY */}
+      GALLERY
       <section className="border-y border-white/10 bg-[#0d0d0d] py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
@@ -582,6 +636,7 @@ export default function Home() {
                 LET&apos;S BUILD IT.
               </h2>
             </div>
+            
 
             <button className="flex items-center gap-3 bg-black px-7 py-5 font-bold text-white transition hover:bg-white hover:text-black">
               GET IN TOUCH
@@ -593,21 +648,101 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-white/10 bg-black">
+<footer className="border-t border-white/10 bg-black">
+  <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-3 lg:px-10">
 
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 px-6 py-10 text-sm text-white/40 md:flex-row lg:px-10">
+    {/* Company */}
+    <div>
+      <p className="text-xl font-black tracking-[0.2em] text-white">
+        GLOARO
+      </p>
 
-          <p>
-            © {new Date().getFullYear()} GLOARO. All rights reserved.
-          </p>
+      <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/40">
+        Construction
+      </p>
 
-          <p>
-            BUILDING THE FUTURE.
-          </p>
+      <p className="mt-6 max-w-xs text-sm leading-6 text-white/40">
+        Building better spaces with quality, precision and innovation.
+      </p>
+    </div>
 
-        </div>
+    {/* Address */}
+    <div>
+      <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d6ff3f]">
+        Visit Us
+      </p>
 
-      </footer>
+    <div>
+ 
+  <p className="mt-4 text-sm text-white/50">
+    Prefer to reach out directly? Here's how to find us.
+  </p>
+
+  <div className="mt-6 space-y-5">
+
+    {/* Address */}
+    <div className="flex gap-4">
+      <MapPin className="mt-1 shrink-0 text-[#d6ff3f]" size={20} />
+
+      <p className="text-sm leading-6 text-white/70">
+        SF No.101/2B, Esai Towers, Salem Main Road,
+        <br />
+        Near Bypass, Emmaper, Kallakurichi – 606202,
+        <br />
+        Tamil Nadu, India.
+      </p>
+    </div>
+
+    {/* Phone */}
+    <div className="flex items-center gap-4">
+      <Phone className="shrink-0 text-[#d6ff3f]" size={18} />
+
+      <p className="text-sm text-white/70">
+        +91 72000 73704
+      </p>
+    </div>
+
+    {/* Email */}
+    <div className="flex items-center gap-4">
+      <Mail className="shrink-0 text-[#d6ff3f]" size={18} />
+
+      <p className="text-sm text-white/70">
+        info@gloaro.com
+      </p>
+    </div>
+
+  </div>
+</div>
+    </div>
+
+    {/* Contact */}
+    <div>
+      <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d6ff3f]">
+        Contact
+      </p>
+
+      <p className="mt-4 text-sm leading-7 text-white/60">
+        Get in touch with us
+        <br />
+        for your next project.
+      </p>
+    </div>
+
+  </div>
+
+  {/* Bottom bar */}
+  <div className="border-t border-white/10">
+    <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-white/30 sm:flex-row lg:px-10">
+      <p>
+        © {new Date().getFullYear()} GLOARO. All rights reserved.
+      </p>
+
+      <p>
+        BUILDING THE FUTURE.
+      </p>
+    </div>
+  </div>
+</footer>
 
     </main>
   );
