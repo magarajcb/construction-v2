@@ -283,48 +283,89 @@ export default function Home() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="border-y border-white/10 bg-[#0d0d0d] py-24">
-        <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
+     {/* WHY CHOOSE US */}
+<section className="border-y border-white/10 bg-[#0d0d0d] py-24">
+  <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
 
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
-              Why Choose Us
-            </p>
+    {/* IMAGE */}
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="relative min-h-[420px] overflow-hidden border border-white/10"
+    >
+      <img
+        src="/images/about/worker.jpg"
+        alt="GLOARO construction project"
+        className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-105"
+      />
 
-            <h2 className="mt-4 text-5xl font-black tracking-tight">
-              BUILT ON
-              <br />
-              <span className="text-white/30">
-                TRUST.
-              </span>
-            </h2>
-          </div>
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/30" />
 
-          <div className="space-y-5">
-            {reasons.map((reason, index) => (
-              <motion.div
-                key={reason}
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex items-center gap-5 border-b border-white/10 pb-5"
-              >
-                <CheckCircle2
-                  className="shrink-0 text-[#d6ff3f]"
-                  size={22}
-                />
+      {/* Lime accent */}
+      <div className="absolute bottom-0 left-0 h-1 w-32 bg-[#d6ff3f]" />
 
-                <span className="text-lg text-white/70">
-                  {reason}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+      {/* Small label */}
+      <div className="absolute bottom-6 left-6 border border-white/10 bg-black/70 px-5 py-3 backdrop-blur-md">
+        <p className="text-xs uppercase tracking-[0.25em] text-[#d6ff3f]">
+          GLOARO Construction
+        </p>
+        <p className="mt-1 text-sm text-white/70">
+          Built with precision
+        </p>
+      </div>
+    </motion.div>
 
-        </div>
-      </section>
+    {/* CONTENT */}
+    <div className="flex flex-col justify-center">
 
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+          Why Choose Us
+        </p>
+
+        <h2 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
+          BUILT ON
+          <br />
+          <span className="text-white/30">
+            TRUST.
+          </span>
+        </h2>
+      </motion.div>
+
+      {/* REASONS */}
+      <div className="mt-12 space-y-5">
+        {reasons.map((reason, index) => (
+          <motion.div
+            key={reason}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="flex items-center gap-5 border-b border-white/10 pb-5"
+          >
+            <CheckCircle2
+              className="shrink-0 text-[#d6ff3f]"
+              size={22}
+            />
+
+            <span className="text-lg text-white/70">
+              {reason}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
       {/* PROJECTS */}
       <section
         id="projects"
