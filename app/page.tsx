@@ -439,10 +439,10 @@ export default function Home() {
               </h2>
             </div>
 
-            <button className="flex items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]">
+            {/* <button className="flex items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]">
               VIEW ALL PROJECTS
               <ArrowRight size={16} />
-            </button>
+            </button> */}
 
           </div>
 
@@ -520,10 +520,10 @@ export default function Home() {
       </h2>
     </div>
 
-    <button className="flex w-fit items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]">
+    {/* <button className="flex w-fit items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]">
       VIEW ALL SERVICES
       <ArrowRight size={16} />
-    </button>
+    </button> */}
   </div>
 
   {/* Service cards */}
