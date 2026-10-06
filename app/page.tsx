@@ -134,13 +134,20 @@ export default function Home() {
             )}
           </div>
 
-          <a
+          {/* <a
             href="#contact"
             className="hidden items-center gap-2 bg-[#d6ff3f] px-5 py-3 text-sm font-bold text-black transition hover:bg-white md:flex"
           >
             GET A QUOTE
             <ArrowRight size={16} />
-          </a>
+          </a> */}
+          <Link
+  href="/admin"
+  className="..."
+>
+  ADMIN
+  <ArrowRight size={18} />
+</Link>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
