@@ -27,8 +27,10 @@ export default function AdminPage() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [projects, setProjects] = useState<any[]>([]);
+  const [inquiries, setInquiries] = useState<any[]>([]);
   useEffect(() => {
   loadProjects();
+  loadInquiries();
 }, []);
 
 async function loadProjects() {
@@ -44,6 +46,21 @@ async function loadProjects() {
     setProjects(data);
   } catch (error) {
     console.error("LOAD PROJECTS ERROR:", error);
+  }
+}
+async function loadInquiries() {
+  try {
+    const response = await fetch("/api/inquiries");
+
+    if (!response.ok) {
+      throw new Error("Failed to load inquiries");
+    }
+
+    const data = await response.json();
+
+    setInquiries(data);
+  } catch (error) {
+    console.error("LOAD INQUIRIES ERROR:", error);
   }
 }
 async function deleteProject(id: string) {
@@ -484,6 +501,104 @@ async function deleteProject(id: string) {
 
           </form>
 
+{/* CUSTOMER INQUIRIES */}
+<section className="mt-10 border border-white/10 bg-[#0d0d0d] p-8">
+
+  <div className="mb-8">
+    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+      CUSTOMER INQUIRIES
+    </p>
+
+    <h2 className="mt-3 text-2xl font-bold">
+      Project Enquiries
+    </h2>
+
+    <p className="mt-2 text-sm text-white/40">
+      Messages submitted through the website contact form.
+    </p>
+  </div>
+
+  <div className="space-y-4">
+
+    {inquiries.length === 0 ? (
+      <p className="text-white/40">
+        No inquiries found.
+      </p>
+    ) : (
+      inquiries.map((inquiry) => (
+        <div
+          key={inquiry._id}
+          className="border border-white/10 bg-black p-6"
+        >
+
+          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+
+            <div>
+
+              <div className="flex items-center gap-3">
+
+                <h3 className="text-lg font-bold">
+                  {inquiry.name}
+                </h3>
+
+                <span className="border border-[#d6ff3f]/30 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[#d6ff3f]">
+                  {inquiry.status}
+                </span>
+
+              </div>
+
+              <div className="mt-3 space-y-1 text-sm text-white/50">
+
+                <p>
+                  Email:{" "}
+                  <span className="text-white/80">
+                    {inquiry.email}
+                  </span>
+                </p>
+
+                <p>
+                  Phone:{" "}
+                  <span className="text-white/80">
+                    {inquiry.phone}
+                  </span>
+                </p>
+
+                <p>
+                  Project Type:{" "}
+                  <span className="text-white/80">
+                    {inquiry.projectType}
+                  </span>
+                </p>
+
+              </div>
+
+            </div>
+
+            <p className="text-xs text-white/30">
+              {new Date(inquiry.createdAt).toLocaleString()}
+            </p>
+
+          </div>
+
+          <div className="mt-5 border-t border-white/10 pt-5">
+
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/30">
+              Project Details
+            </p>
+
+            <p className="leading-7 text-white/70">
+              {inquiry.details}
+            </p>
+
+          </div>
+
+        </div>
+      ))
+    )}
+
+  </div>
+
+</section>
         </section>
 
       </div>

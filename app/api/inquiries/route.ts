@@ -2,6 +2,26 @@ import { NextRequest, NextResponse } from "next/server";
 import {connectDB} from "@/lib/mongodb";
 import Inquiry from "@/models/Inquiry";
 
+export async function GET() {
+  try {
+    await connectDB();
+
+    const inquiries = await Inquiry.find()
+      .sort({ createdAt: -1 })
+      .lean();
+
+    return NextResponse.json(inquiries);
+  } catch (error) {
+    console.error("GET INQUIRIES ERROR:", error);
+
+    return NextResponse.json(
+      {
+        message: "Failed to load inquiries",
+      },
+      { status: 500 }
+    );
+  }
+}
 export async function POST(request: NextRequest) {
   try {
     await connectDB();
