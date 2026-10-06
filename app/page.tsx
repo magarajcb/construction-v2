@@ -575,75 +575,109 @@ export default function Home() {
   </div>
 </section>
 
-      GALLERY
-      <section className="border-y border-white/10 bg-[#0d0d0d] py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      {/* GALLERY */}
+<section className="border-y border-white/10 bg-[#0d0d0d] py-32">
+  <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
-          <div className="mb-14">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
-              Our Work
-            </p>
+    <div className="mb-14">
+      <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+        Our Work
+      </p>
 
-            <h2 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
-              PROJECT GALLERY
-            </h2>
-          </div>
+      <h2 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
+        PROJECT GALLERY
+      </h2>
+    </div>
 
-          <div className="grid gap-4 md:grid-cols-4">
+    <div className="grid gap-4 md:grid-cols-4">
 
-            <div className="group relative h-72 overflow-hidden bg-gradient-to-br from-[#333] to-[#111] md:col-span-2">
-              <div className="absolute inset-0 bg-[#d6ff3f]/0 transition group-hover:bg-[#d6ff3f]/10" />
+      {/* Modern Living */}
+      <div className="group relative h-72 overflow-hidden md:col-span-2">
+        <img
+          src="/images/projects/modern-living.jpg"
+          alt="Modern Living - Residential Construction"
+          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
 
-              <div className="absolute bottom-5 left-5">
-                <p className="text-xs uppercase tracking-widest text-white/40">
-                  Residential
-                </p>
+        <div className="absolute inset-0 bg-black/20 transition group-hover:bg-[#d6ff3f]/10" />
 
-                <p className="mt-1 text-xl font-bold">
-                  Modern Living
-                </p>
-              </div>
-            </div>
+        <div className="absolute bottom-5 left-5">
+          <p className="text-xs uppercase tracking-widest text-white/70">
+            Residential
+          </p>
 
-            <div className="group relative h-72 overflow-hidden bg-gradient-to-br from-[#222] to-[#080808]">
-              <div className="absolute bottom-5 left-5">
-                <p className="text-xs uppercase tracking-widest text-white/40">
-                  Interior
-                </p>
-
-                <p className="mt-1 text-xl font-bold">
-                  Fine Details
-                </p>
-              </div>
-            </div>
-
-            <div className="group relative h-72 overflow-hidden bg-gradient-to-br from-[#444] to-[#101010]">
-              <div className="absolute bottom-5 left-5">
-                <p className="text-xs uppercase tracking-widest text-white/40">
-                  Commercial
-                </p>
-
-                <p className="mt-1 text-xl font-bold">
-                  Bold Spaces
-                </p>
-              </div>
-            </div>
-
-            <div className="group relative h-72 overflow-hidden bg-gradient-to-br from-[#151515] to-[#303030] md:col-span-2">
-              <div className="absolute bottom-5 left-5">
-                <p className="text-xs uppercase tracking-widest text-white/40">
-                  Architecture
-                </p>
-
-                <p className="mt-1 text-xl font-bold">
-                  Designed To Last
-                </p>
-              </div>
-            </div>
-
-          </div>
+          <p className="mt-1 text-xl font-bold">
+            Modern Living
+          </p>
         </div>
-      </section>
+      </div>
+
+      {/* Fine Details */}
+      <div className="group relative h-72 overflow-hidden">
+        <img
+          src="/images/projects/fine-details.jpg"
+          alt="Fine Details - Interior Works"
+          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-black/25 transition group-hover:bg-[#d6ff3f]/10" />
+
+        <div className="absolute bottom-5 left-5">
+          <p className="text-xs uppercase tracking-widest text-white/70">
+            Interior
+          </p>
+
+          <p className="mt-1 text-xl font-bold">
+            Fine Details
+          </p>
+        </div>
+      </div>
+
+      {/* Bold Spaces */}
+      <div className="group relative h-72 overflow-hidden">
+        <img
+          src="/images/projects/bold-spaces.jpg"
+          alt="Bold Spaces - Commercial Construction"
+          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-black/25 transition group-hover:bg-[#d6ff3f]/10" />
+
+        <div className="absolute bottom-5 left-5">
+          <p className="text-xs uppercase tracking-widest text-white/70">
+            Commercial
+          </p>
+
+          <p className="mt-1 text-xl font-bold">
+            Bold Spaces
+          </p>
+        </div>
+      </div>
+
+      {/* Designed To Last */}
+      <div className="group relative h-72 overflow-hidden md:col-span-2">
+        <img
+          src="/images/projects/designed-to-last.jpg"
+          alt="Designed To Last - Architecture"
+          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-black/20 transition group-hover:bg-[#d6ff3f]/10" />
+
+        <div className="absolute bottom-5 left-5">
+          <p className="text-xs uppercase tracking-widest text-white/70">
+            Architecture
+          </p>
+
+          <p className="mt-1 text-xl font-bold">
+            Designed To Last
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* CONTACT */}
       <section
