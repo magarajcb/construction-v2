@@ -324,13 +324,13 @@ export default function Home() {
               opportunity to build something meaningful.
             </p>
 
-            <a
-              href="#contact"
-              className="mt-8 flex w-fit items-center gap-3 border-b border-[#d6ff3f] pb-2 text-sm font-bold text-[#d6ff3f]"
-            >
-              DISCOVER OUR STORY
-              <ArrowRight size={16} />
-            </a>
+          <Link
+  href="/about"
+  className="flex items-center gap-3 border-b border-[#d6ff3f] pb-2 font-bold text-[#d6ff3f] transition hover:text-white"
+>
+  DISCOVER OUR STORY
+  <ArrowRight size={18} />
+</Link>
           </div>
 
         </div>
