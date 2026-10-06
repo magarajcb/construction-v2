@@ -704,10 +704,13 @@ export default function Home() {
             </div>
             
 
-            <button className="flex items-center gap-3 bg-black px-7 py-5 font-bold text-white transition hover:bg-white hover:text-black">
-              GET IN TOUCH
-              <ArrowRight size={18} />
-            </button>
+           <Link
+  href="/contact"
+  className="flex items-center gap-3 bg-black px-7 py-5 font-bold text-white transition hover:bg-white hover:text-black"
+>
+  GET IN TOUCH
+  <ArrowRight size={18} />
+</Link>
 
           </div>
         </div>
