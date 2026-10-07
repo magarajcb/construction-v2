@@ -81,7 +81,26 @@ const ProjectSchema = new Schema<IProject>(
   },
 );
 
+// const Project: Model<IProject> =
+//   mongoose.models.Project ||
+//   mongoose.model<IProject>("Project", ProjectSchema);
+// export default Project;
+export const PROJECT_FIELDS = [
+  "title",
+  "slug",
+  "client",
+  "location",
+  "category",
+  "year",
+  "status",
+  "description",
+  "coverImage",
+  "images",
+  "videos",
+] as const;
+
 const Project: Model<IProject> =
   mongoose.models.Project ||
   mongoose.model<IProject>("Project", ProjectSchema);
+
 export default Project;
