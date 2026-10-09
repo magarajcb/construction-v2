@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import {connectDB} from "@/lib/mongodb";
 import Inquiry from "@/models/Inquiry";
+import { verifyAdmin } from "@/lib/auth";
 
+// Admin only: customer names, phones and emails must not be public.
 export async function GET() {
   try {
+    if (!(await verifyAdmin())) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+
     await connectDB();
 
     const inquiries = await Inquiry.find()
