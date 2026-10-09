@@ -6,38 +6,37 @@ if (!MONGODB_URI) {
   throw new Error("MONGODB_URI is not defined");
 }
 
-let cached = (global as typeof globalThis & {
-  mongoose?: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
-  };
-}).mongoose;
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
 
-if (!cached) {
-  cached = (global as typeof globalThis & {
-    mongoose?: {
-      conn: typeof mongoose | null;
-      promise: Promise<typeof mongoose> | null;
-    };
-  }).mongoose = {
-    conn: null,
-    promise: null,
-  };
-}
+const globalWithMongoose = global as typeof globalThis & {
+  mongoose?: MongooseCache;
+};
+
+const cached: MongooseCache =
+  globalWithMongoose.mongoose ??
+  (globalWithMongoose.mongoose = { conn: null, promise: null });
 
 export async function connectDB() {
-  if (cached?.conn) {
+  if (cached.conn) {
     return cached.conn;
   }
 
-  if (!cached?.promise) {
-   cached!.promise = mongoose.connect(MONGODB_URI!  , {
-  serverSelectionTimeoutMS: 10000,
-   directConnection: true,
-});
+  if (!cached.promise) {
+    // No directConnection: the driver must find the cluster's primary to write.
+    cached.promise = mongoose.connect(MONGODB_URI!, {
+      serverSelectionTimeoutMS: 10000,
+    });
   }
 
-  cached!.conn = await cached!.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (error) {
+    cached.promise = null; // let the next request retry instead of failing forever
+    throw error;
+  }
 
-  return cached!.conn;
+  return cached.conn;
 }
