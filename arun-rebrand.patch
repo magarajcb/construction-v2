@@ -1,0 +1,410 @@
+diff --git a/app/about/page.tsx b/app/about/page.tsx
+index 8842184..89e1dcc 100644
+--- a/app/about/page.tsx
++++ b/app/about/page.tsx
+@@ -15,12 +15,12 @@ export default function AboutPage() {
+ 
+           <Link href="/" className="flex items-center gap-3">
+             <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
+-              <span className="text-xl font-black">G</span>
++              <span className="text-xl font-black">A</span>
+             </div>
+ 
+             <div>
+               <p className="text-xl font-black tracking-[0.2em]">
+-                GLOARO
++                ARUN
+               </p>
+               <p className="text-[9px] tracking-[0.35em] text-subtle">
+                 CONSTRUCTION
+@@ -86,7 +86,7 @@ export default function AboutPage() {
+ 
+           <div className="space-y-6 text-lg leading-8 text-muted">
+             <p>
+-              GLOARO Construction is built around a simple idea:
++              Arun Construction is built around a simple idea:
+               great spaces begin with great thinking.
+             </p>
+ 
+diff --git a/app/admin/AdminPanel.tsx b/app/admin/AdminPanel.tsx
+index f5e4fe9..ea3501c 100644
+--- a/app/admin/AdminPanel.tsx
++++ b/app/admin/AdminPanel.tsx
+@@ -196,7 +196,7 @@ async function deleteProject(id: string) {
+ 
+           <div>
+             <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+-              GLOARO CONSTRUCTION
++              ARUN CONSTRUCTION
+             </p>
+ 
+             <h1 className="mt-3 text-4xl font-black">
+@@ -346,7 +346,7 @@ async function deleteProject(id: string) {
+                   name="client"
+                   value={form.client}
+                   onChange={handleChange}
+-                  placeholder="GLOARO"
++                  placeholder="Client name"
+                   className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+                 />
+               </div>
+diff --git a/app/admin/login/page.tsx b/app/admin/login/page.tsx
+index da550e0..47fc553 100644
+--- a/app/admin/login/page.tsx
++++ b/app/admin/login/page.tsx
+@@ -52,7 +52,7 @@ export default function AdminLoginPage() {
+ 
+           <div>
+             <h1 className="text-2xl font-bold">
+-              GLOARO ADMIN
++              ARUN ADMIN
+             </h1>
+ 
+             <p className="text-sm text-subtle">
+@@ -73,7 +73,7 @@ export default function AdminLoginPage() {
+               value={email}
+               onChange={(e) => setEmail(e.target.value)}
+               className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+-              placeholder="admin@gloaro.com"
++              placeholder="admin@arunbuilders.in"
+               required
+             />
+           </div>
+diff --git a/app/contact/page.tsx b/app/contact/page.tsx
+index e6f5641..a3956e7 100644
+--- a/app/contact/page.tsx
++++ b/app/contact/page.tsx
+@@ -72,7 +72,7 @@ export default function ContactPage() {
+ 
+             <div>
+               <div className="text-lg font-bold tracking-[0.2em]">
+-                GLO<span className="text-accent-strong">ARO</span>
++                AR<span className="text-accent-strong">UN</span>
+               </div>
+ 
+               <div className="text-[9px] tracking-[0.35em] text-subtle">
+@@ -240,7 +240,7 @@ export default function ContactPage() {
+             </p>
+ 
+             <h2 className="mt-4 text-3xl font-black">
+-              GLOARO CONSTRUCTION
++              ARUN CONSTRUCTION
+             </h2>
+ 
+             <p className="mt-5 leading-7 text-muted">
+@@ -259,15 +259,9 @@ export default function ContactPage() {
+                   </p>
+ 
+                   <p className="mt-2 text-sm leading-6 text-body">
+-                    SF No.101/2B, Esai Towers,
++                    No. 52, Alagiri Samy Salai,
+                     <br />
+-                    Salem Main Road,
+-                    <br />
+-                    Near Bypass, Emmaper,
+-                    <br />
+-                    Kallakurichi – 606202,
+-                    <br />
+-                    Tamil Nadu, India.
++                    KK Nagar, Chennai – 600 078.
+                   </p>
+                 </div>
+               </div>
+@@ -280,8 +274,10 @@ export default function ContactPage() {
+                     Phone
+                   </p>
+ 
+-                  <p className="mt-2 text-sm text-body">
+-                    +91 72000 73704
++                  <p className="mt-2 text-sm leading-6 text-body">
++                    044 - 423 44333
++                    <br />
++                    +91 99403 07575
+                   </p>
+                 </div>
+               </div>
+@@ -294,8 +290,18 @@ export default function ContactPage() {
+                     Email
+                   </p>
+ 
+-                  <p className="mt-2 text-sm text-body">
+-                    info@gloaro.com
++                  <p className="mt-2 text-sm leading-6 text-body">
++                    arunconstructionno1@gmail.com
++                    <br />
++                    arunbuildersindia@gmail.com
++                    <br />
++                    sales@arunbuilders.in
++                    <br />
++                    marketing@arunbuilders.in
++                    <br />
++                    arun@arunbuilders.in
++                    <br />
++                    admin@arunbuilders.in
+                   </p>
+                 </div>
+               </div>
+diff --git a/app/globals.css b/app/globals.css
+index e98e847..02b4656 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -1,7 +1,7 @@
+ @import "tailwindcss";
+ 
+ /*
+-  GLOARO light theme
++  Arun Construction light theme
+   Single source of truth for the site palette. Components use the semantic
+   utilities below (bg-page, text-ink, border-line, bg-accent, ...) instead of
+   hardcoded hex values, so every section stays consistent.
+diff --git a/app/layout.tsx b/app/layout.tsx
+index 9852c15..d1ad5f8 100644
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
+ });
+ 
+ export const metadata: Metadata = {
+-  title: "Create Next App",
+-  description: "Generated by create next app",
++  title: "Arun Construction | Your Dreams Our Reality",
++  description: "Arun Construction builds residential and commercial spaces in Chennai with quality, precision and innovation.",
+ };
+ 
+ export default function RootLayout({ children }: LayoutProps<"/">) {
+diff --git a/app/page.tsx b/app/page.tsx
+index 1b0f5f0..9289a4e 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -246,7 +246,7 @@ export default function Home() {
+ 
+               <div>
+                 <div className="text-lg font-bold tracking-[0.2em]">
+-                  GLO<span className="text-accent-strong">ARO</span>
++                  AR<span className="text-accent-strong">UN</span>
+                 </div>
+ 
+                 <div className="text-[9px] tracking-[0.35em] text-subtle">
+@@ -508,7 +508,7 @@ export default function Home() {
+             >
+               <img
+                 src="/images/about/worker.jpg"
+-                alt="GLOARO construction project"
++                alt="Arun Construction project"
+                 className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-105"
+               />
+ 
+@@ -517,7 +517,7 @@ export default function Home() {
+ 
+               <div className="absolute bottom-6 left-6 border border-line bg-white/90 px-5 py-3 backdrop-blur-md">
+                 <p className="text-xs uppercase tracking-[0.25em] text-accent-strong">
+-                  GLOARO Construction
++                  Arun Construction
+                 </p>
+                 <p className="mt-1 text-sm text-body">
+                   Built with precision
+@@ -786,14 +786,18 @@ export default function Home() {
+             {/* Company */}
+             <div>
+               <p className="text-xl font-black tracking-[0.2em] text-white">
+-                GLOARO
++                ARUN
+               </p>
+ 
+               <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/55">
+                 Construction
+               </p>
+ 
+-              <p className="mt-6 max-w-xs text-sm leading-6 text-white/55">
++              <p className="mt-6 text-sm font-semibold text-accent">
++                Your Dreams Our Reality
++              </p>
++
++              <p className="mt-3 max-w-xs text-sm leading-6 text-white/55">
+                 Building better spaces with quality, precision and innovation.
+               </p>
+             </div>
+@@ -813,22 +817,28 @@ export default function Home() {
+                   <MapPin className="mt-1 shrink-0 text-accent" size={20} />
+ 
+                   <p className="text-sm leading-6 text-white/75">
+-                    SF No.101/2B, Esai Towers, Salem Main Road,
+-                    <br />
+-                    Near Bypass, Emmaper, Kallakurichi – 606202,
++                    No. 52, Alagiri Samy Salai,
+                     <br />
+-                    Tamil Nadu, India.
++                    KK Nagar, Chennai – 600 078.
+                   </p>
+                 </div>
+ 
+                 <div className="flex items-center gap-4">
+                   <Phone className="shrink-0 text-accent" size={18} />
+-                  <p className="text-sm text-white/75">+91 72000 73704</p>
++                  <p className="text-sm leading-6 text-white/75">
++                    044 - 423 44333
++                    <br />
++                    +91 99403 07575
++                  </p>
+                 </div>
+ 
+                 <div className="flex items-center gap-4">
+                   <Mail className="shrink-0 text-accent" size={18} />
+-                  <p className="text-sm text-white/75">info@gloaro.com</p>
++                  <p className="text-sm leading-6 text-white/75">
++                    arunconstructionno1@gmail.com
++                    <br />
++                    sales@arunbuilders.in
++                  </p>
+                 </div>
+               </div>
+             </div>
+@@ -850,8 +860,14 @@ export default function Home() {
+           {/* Bottom bar */}
+           <div className="border-t border-white/10">
+             <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-white/45 sm:flex-row lg:px-10">
+-              <p>© {new Date().getFullYear()} GLOARO. All rights reserved.</p>
+-              <p>BUILDING THE FUTURE.</p>
++              <p>
++                © {new Date().getFullYear()} Arun Construction. All rights
++                reserved.
++              </p>
++              <p>
++                © Developed by{" "}
++                <span className="font-semibold text-white/75">GLOARO</span>
++              </p>
+             </div>
+           </div>
+         </footer>
+diff --git a/app/services/architecture-design/page.tsx b/app/services/architecture-design/page.tsx
+index 9189358..1a9d1fe 100644
+--- a/app/services/architecture-design/page.tsx
++++ b/app/services/architecture-design/page.tsx
+@@ -26,7 +26,7 @@ export default function ArchitectureDesignPage() {
+ 
+           <div className="mt-16">
+             <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+-              GLOARO CONSTRUCTION
++              ARUN CONSTRUCTION
+             </p>
+ 
+             <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+@@ -189,7 +189,7 @@ export default function ArchitectureDesignPage() {
+ 
+           <div>
+             <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+-              WHY GLOARO
++              WHY ARUN
+             </p>
+ 
+             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+diff --git a/app/services/commercial-construction/page.tsx b/app/services/commercial-construction/page.tsx
+index fd51080..6b238ee 100644
+--- a/app/services/commercial-construction/page.tsx
++++ b/app/services/commercial-construction/page.tsx
+@@ -28,7 +28,7 @@ export default function CommercialConstructionPage() {
+ 
+             <div>
+               <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+-                GLOARO CONSTRUCTION
++                ARUN CONSTRUCTION
+               </p>
+ 
+               <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+@@ -200,7 +200,7 @@ export default function CommercialConstructionPage() {
+ 
+           <div>
+             <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+-              WHY GLOARO
++              WHY ARUN
+             </p>
+ 
+             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+diff --git a/app/services/interior-works/page.tsx b/app/services/interior-works/page.tsx
+index acb4f39..f1e692b 100644
+--- a/app/services/interior-works/page.tsx
++++ b/app/services/interior-works/page.tsx
+@@ -26,7 +26,7 @@ export default function InteriorWorksPage() {
+ 
+           <div className="mt-16">
+             <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+-              GLOARO CONSTRUCTION
++              ARUN CONSTRUCTION
+             </p>
+ 
+             <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+@@ -186,7 +186,7 @@ export default function InteriorWorksPage() {
+ 
+           <div>
+             <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+-              WHY GLOARO
++              WHY ARUN
+             </p>
+ 
+             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+diff --git a/app/services/project-management/page.tsx b/app/services/project-management/page.tsx
+index 9acc862..a62097c 100644
+--- a/app/services/project-management/page.tsx
++++ b/app/services/project-management/page.tsx
+@@ -26,7 +26,7 @@ export default function ProjectManagementPage() {
+ 
+           <div className="mt-16">
+             <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+-              GLOARO CONSTRUCTION
++              ARUN CONSTRUCTION
+             </p>
+ 
+             <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+@@ -186,7 +186,7 @@ export default function ProjectManagementPage() {
+ 
+           <div>
+             <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+-              WHY GLOARO
++              WHY ARUN
+             </p>
+ 
+             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+diff --git a/app/services/renovation/page.tsx b/app/services/renovation/page.tsx
+index 1f9a6f0..38a4028 100644
+--- a/app/services/renovation/page.tsx
++++ b/app/services/renovation/page.tsx
+@@ -26,7 +26,7 @@ export default function RenovationPage() {
+ 
+           <div className="mt-16">
+             <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+-              GLOARO CONSTRUCTION
++              ARUN CONSTRUCTION
+             </p>
+ 
+             <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+@@ -184,7 +184,7 @@ export default function RenovationPage() {
+ 
+           <div>
+             <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+-              WHY GLOARO
++              WHY ARUN
+             </p>
+ 
+             <h2 className="mt-4 text-4xl font-black sm:text-5xl">
+diff --git a/app/services/residential-construction/page.tsx b/app/services/residential-construction/page.tsx
+index b6b588a..c6836fa 100644
+--- a/app/services/residential-construction/page.tsx
++++ b/app/services/residential-construction/page.tsx
+@@ -29,7 +29,7 @@ export default function ResidentialConstructionPage() {
+ 
+             <div>
+               <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+-                GLOARO CONSTRUCTION
++                ARUN CONSTRUCTION
+               </p>
+ 
+               <h1 className="mt-5 text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+@@ -202,7 +202,7 @@ export default function ResidentialConstructionPage() {
+ 
+           <div>
+             <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+-              WHY GLOARO
++              WHY ARUN
+             </p>
+ 
+             <h2 className="mt-4 text-4xl font-black sm:text-5xl">

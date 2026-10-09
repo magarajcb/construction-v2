@@ -1,0 +1,2814 @@
+diff --git a/app/about/page.tsx b/app/about/page.tsx
+index 9f148aa..8842184 100644
+--- a/app/about/page.tsx
++++ b/app/about/page.tsx
+@@ -7,14 +7,14 @@ import {
+ 
+ export default function AboutPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* NAVBAR */}
+-      <nav className="border-b border-white/10">
++      <nav className="border-b border-line">
+         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
+ 
+           <Link href="/" className="flex items-center gap-3">
+-            <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
++            <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
+               <span className="text-xl font-black">G</span>
+             </div>
+ 
+@@ -22,7 +22,7 @@ export default function AboutPage() {
+               <p className="text-xl font-black tracking-[0.2em]">
+                 GLOARO
+               </p>
+-              <p className="text-[9px] tracking-[0.35em] text-white/40">
++              <p className="text-[9px] tracking-[0.35em] text-subtle">
+                 CONSTRUCTION
+               </p>
+             </div>
+@@ -30,7 +30,7 @@ export default function AboutPage() {
+ 
+           <Link
+             href="/"
+-            className="flex items-center gap-2 text-sm font-bold transition hover:text-[#d6ff3f]"
++            className="flex items-center gap-2 text-sm font-bold transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK HOME
+@@ -41,22 +41,22 @@ export default function AboutPage() {
+ 
+ 
+       {/* HERO */}
+-      <section className="border-b border-white/10 px-6 py-28 lg:px-10 lg:py-40">
++      <section className="border-b border-line px-6 py-28 lg:px-10 lg:py-40">
+ 
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+             OUR STORY
+           </p>
+ 
+           <h1 className="mt-6 max-w-5xl text-6xl font-black leading-[0.9] tracking-tight sm:text-7xl lg:text-9xl">
+             MORE THAN
+             <br />
+-            <span className="text-white/20">CONSTRUCTION.</span>
++            <span className="text-faint">CONSTRUCTION.</span>
+           </h1>
+ 
+           <div className="mt-12 max-w-2xl">
+-            <p className="text-xl leading-9 text-white/60">
++            <p className="text-xl leading-9 text-muted">
+               We create spaces that combine engineering, architecture,
+               craftsmanship and human experience.
+             </p>
+@@ -68,12 +68,12 @@ export default function AboutPage() {
+ 
+ 
+       {/* OUR STORY */}
+-      <section className="border-b border-white/10 px-6 py-28 lg:px-10">
++      <section className="border-b border-line px-6 py-28 lg:px-10">
+ 
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+               WHO WE ARE
+             </p>
+ 
+@@ -84,7 +84,7 @@ export default function AboutPage() {
+             </h2>
+           </div>
+ 
+-          <div className="space-y-6 text-lg leading-8 text-white/60">
++          <div className="space-y-6 text-lg leading-8 text-muted">
+             <p>
+               GLOARO Construction is built around a simple idea:
+               great spaces begin with great thinking.
+@@ -109,12 +109,12 @@ export default function AboutPage() {
+ 
+ 
+       {/* APPROACH */}
+-      <section className="border-b border-white/10 bg-[#0d0d0d] px-6 py-28 lg:px-10">
++      <section className="border-b border-line bg-section px-6 py-28 lg:px-10">
+ 
+         <div className="mx-auto max-w-7xl">
+ 
+           <div className="mb-16">
+-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+               OUR APPROACH
+             </p>
+ 
+@@ -126,7 +126,7 @@ export default function AboutPage() {
+           </div>
+ 
+ 
+-          <div className="grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-4">
++          <div className="grid gap-px bg-line md:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -152,9 +152,9 @@ export default function AboutPage() {
+             ].map((step) => (
+               <div
+                 key={step.number}
+-                className="bg-[#0d0d0d] p-8"
++                className="bg-section p-8"
+               >
+-                <p className="text-sm font-bold text-[#d6ff3f]">
++                <p className="text-sm font-bold text-accent-strong">
+                   {step.number}
+                 </p>
+ 
+@@ -162,7 +162,7 @@ export default function AboutPage() {
+                   {step.title}
+                 </h3>
+ 
+-                <p className="mt-4 leading-7 text-white/40">
++                <p className="mt-4 leading-7 text-subtle">
+                   {step.text}
+                 </p>
+               </div>
+@@ -176,14 +176,14 @@ export default function AboutPage() {
+ 
+ 
+       {/* VALUES */}
+-      <section className="border-b border-white/10 px-6 py-28 lg:px-10">
++      <section className="border-b border-line px-6 py-28 lg:px-10">
+ 
+         <div className="mx-auto max-w-7xl">
+ 
+           <div className="grid gap-16 lg:grid-cols-2">
+ 
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+                 WHAT WE BELIEVE
+               </p>
+ 
+@@ -205,11 +205,11 @@ export default function AboutPage() {
+               ].map((value) => (
+                 <div
+                   key={value}
+-                  className="flex items-center gap-4 border-b border-white/10 pb-5"
++                  className="flex items-center gap-4 border-b border-line pb-5"
+                 >
+                   <Check
+                     size={18}
+-                    className="text-[#d6ff3f]"
++                    className="text-accent-strong"
+                   />
+ 
+                   <p className="text-lg font-bold">
+@@ -234,7 +234,7 @@ export default function AboutPage() {
+ 
+           <p className="max-w-5xl text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
+             WE DON'T JUST BUILD STRUCTURES.
+-            <span className="text-[#d6ff3f]">
++            <span className="text-accent-strong">
+               {" "}WE BUILD WHAT COMES NEXT.
+             </span>
+           </p>
+@@ -245,7 +245,7 @@ export default function AboutPage() {
+ 
+ 
+       {/* CTA */}
+-      <section className="bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="bg-accent px-6 py-20 text-primary lg:px-10">
+ 
+         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 md:flex-row md:items-center">
+ 
+@@ -261,7 +261,7 @@ export default function AboutPage() {
+ 
+           <Link
+             href="/contact"
+-            className="flex items-center gap-3 bg-black px-7 py-5 font-bold text-white transition hover:bg-white hover:text-black"
++            className="flex items-center gap-3 bg-primary px-7 py-5 font-bold text-white transition hover:bg-white hover:text-primary"
+           >
+             START A PROJECT
+             <ArrowRight size={18} />
+diff --git a/app/admin/AdminPanel.tsx b/app/admin/AdminPanel.tsx
+index 629023d..f5e4fe9 100644
+--- a/app/admin/AdminPanel.tsx
++++ b/app/admin/AdminPanel.tsx
+@@ -187,7 +187,7 @@ async function deleteProject(id: string) {
+   }
+ 
+   return (
+-    <main className="min-h-screen bg-[#080808] px-6 py-12 text-white">
++    <main className="min-h-screen bg-page px-6 py-12 text-ink">
+ 
+       <div className="mx-auto max-w-5xl">
+ 
+@@ -195,7 +195,7 @@ async function deleteProject(id: string) {
+         <div className="mb-12 flex items-center justify-between">
+ 
+           <div>
+-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+               GLOARO CONSTRUCTION
+             </p>
+ 
+@@ -203,7 +203,7 @@ async function deleteProject(id: string) {
+               ADMIN DASHBOARD
+             </h1>
+ 
+-            <p className="mt-2 text-white/50">
++            <p className="mt-2 text-muted">
+               Add and manage construction projects.
+             </p>
+           </div>
+@@ -211,7 +211,7 @@ async function deleteProject(id: string) {
+          <div className="flex items-center gap-3">
+   <a
+     href="/"
+-    className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-[#d6ff3f] hover:text-[#d6ff3f]"
++    className="flex items-center gap-2 border border-line-strong px-5 py-3 text-sm transition hover:border-accent hover:text-accent-strong"
+   >
+     <ArrowLeft size={16} />
+     WEBSITE
+@@ -220,7 +220,7 @@ async function deleteProject(id: string) {
+   <button
+     type="button"
+     onClick={handleLogout}
+-    className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-red-400 hover:text-red-400"
++    className="flex items-center gap-2 border border-line-strong px-5 py-3 text-sm transition hover:border-red-400 hover:text-red-600"
+   >
+     <LogOut size={16} />
+     LOGOUT
+@@ -230,10 +230,10 @@ async function deleteProject(id: string) {
+         </div>
+ 
+         {/* ADD PROJECT */}
+-        <section className="border border-white/10 bg-[#0d0d0d] p-8">
++        <section className="border border-line bg-section p-8">
+ 
+           <div className="mb-8 flex items-center gap-3">
+-            <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
++            <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
+               <Plus size={20} />
+             </div>
+ 
+@@ -242,16 +242,16 @@ async function deleteProject(id: string) {
+                 Add New Project
+               </h2>
+ 
+-              <p className="text-sm text-white/40">
++              <p className="text-sm text-subtle">
+                 Project information will be saved to MongoDB.
+               </p>
+             </div>
+           </div>
+ 
+           <form onSubmit={handleSubmit} className="space-y-6">
+-            <section className="mt-10 border border-white/10 bg-[#0d0d0d] p-8">
++            <section className="mt-10 border border-line bg-section p-8">
+   <div className="mb-8">
+-    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++    <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+       PROJECT MANAGEMENT
+     </p>
+ 
+@@ -259,28 +259,28 @@ async function deleteProject(id: string) {
+       Existing Projects
+     </h2>
+ 
+-    <p className="mt-2 text-sm text-white/40">
++    <p className="mt-2 text-sm text-subtle">
+       Manage projects currently displayed on the website.
+     </p>
+   </div>
+ 
+   <div className="space-y-4">
+     {projects.length === 0 ? (
+-      <p className="text-white/40">
++      <p className="text-subtle">
+         No projects found.
+       </p>
+     ) : (
+       projects.map((project) => (
+         <div
+           key={project._id}
+-          className="flex items-center justify-between border border-white/10 bg-black p-5"
++          className="flex items-center justify-between border border-line bg-white p-5"
+         >
+           <div>
+             <h3 className="font-bold">
+               {project.title}
+             </h3>
+ 
+-            <p className="mt-1 text-sm text-white/40">
++            <p className="mt-1 text-sm text-subtle">
+               {project.category} · {project.location}
+             </p>
+           </div>
+@@ -288,7 +288,7 @@ async function deleteProject(id: string) {
+           <button
+             type="button"
+             onClick={() => deleteProject(project._id)}
+-            className="flex items-center gap-2 border border-red-500/30 px-4 py-2 text-sm font-bold text-red-400 transition hover:bg-red-500 hover:text-white"
++            className="flex items-center gap-2 border border-red-500/30 px-4 py-2 text-sm font-bold text-red-600 transition hover:bg-red-500 hover:text-ink"
+           >
+             <Trash2 size={16} />
+             DELETE
+@@ -303,7 +303,7 @@ async function deleteProject(id: string) {
+             <div className="grid gap-6 md:grid-cols-2">
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Project Title
+                 </label>
+ 
+@@ -313,12 +313,12 @@ async function deleteProject(id: string) {
+                   onChange={handleTitleChange}
+                   placeholder="Modern Residence"
+                   required
+-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none transition focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 outline-none transition focus:border-accent"
+                 />
+               </div>
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Slug
+                 </label>
+ 
+@@ -328,7 +328,7 @@ async function deleteProject(id: string) {
+                   onChange={handleChange}
+                   placeholder="modern-residence"
+                   required
+-                  className="w-full border border-white/10 bg-black px-4 py-3 text-white/50 outline-none focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 text-muted outline-none focus:border-accent"
+                 />
+               </div>
+ 
+@@ -338,7 +338,7 @@ async function deleteProject(id: string) {
+             <div className="grid gap-6 md:grid-cols-2">
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Client
+                 </label>
+ 
+@@ -347,12 +347,12 @@ async function deleteProject(id: string) {
+                   value={form.client}
+                   onChange={handleChange}
+                   placeholder="GLOARO"
+-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+                 />
+               </div>
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Location
+                 </label>
+ 
+@@ -362,7 +362,7 @@ async function deleteProject(id: string) {
+                   onChange={handleChange}
+                   placeholder="Madurai, Tamil Nadu"
+                   required
+-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+                 />
+               </div>
+ 
+@@ -372,7 +372,7 @@ async function deleteProject(id: string) {
+             <div className="grid gap-6 md:grid-cols-3">
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Category
+                 </label>
+ 
+@@ -381,7 +381,7 @@ async function deleteProject(id: string) {
+                   value={form.category}
+                   onChange={handleChange}
+                   required
+-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+                 >
+                   <option value="">Select category</option>
+                   <option value="Residential">Residential</option>
+@@ -393,7 +393,7 @@ async function deleteProject(id: string) {
+               </div>
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Year
+                 </label>
+ 
+@@ -402,12 +402,12 @@ async function deleteProject(id: string) {
+                   value={form.year}
+                   onChange={handleChange}
+                   placeholder="2026"
+-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+                 />
+               </div>
+ 
+               <div>
+-                <label className="mb-2 block text-sm text-white/60">
++                <label className="mb-2 block text-sm text-muted">
+                   Status
+                 </label>
+ 
+@@ -415,7 +415,7 @@ async function deleteProject(id: string) {
+                   name="status"
+                   value={form.status}
+                   onChange={handleChange}
+-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+                 >
+                   <option value="Completed">Completed</option>
+                   <option value="Ongoing">Ongoing</option>
+@@ -427,7 +427,7 @@ async function deleteProject(id: string) {
+ 
+             {/* DESCRIPTION */}
+             <div>
+-              <label className="mb-2 block text-sm text-white/60">
++              <label className="mb-2 block text-sm text-muted">
+                 Description
+               </label>
+ 
+@@ -438,13 +438,13 @@ async function deleteProject(id: string) {
+                 placeholder="Describe the project..."
+                 required
+                 rows={5}
+-                className="w-full resize-none border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                className="w-full resize-none border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+               />
+             </div>
+ 
+             {/* COVER IMAGE */}
+             <div>
+-              <label className="mb-2 flex items-center gap-2 text-sm text-white/60">
++              <label className="mb-2 flex items-center gap-2 text-sm text-muted">
+                 <ImageIcon size={16} />
+                 Cover Image
+               </label>
+@@ -454,17 +454,17 @@ async function deleteProject(id: string) {
+                 value={form.coverImage}
+                 onChange={handleChange}
+                 placeholder="/images/projects/residence-1.jpg"
+-                className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+               />
+ 
+-              <p className="mt-2 text-xs text-white/30">
++              <p className="mt-2 text-xs text-faint">
+                 For now use an image path from public/images.
+               </p>
+             </div>
+ 
+             {/* GALLERY IMAGES */}
+             <div>
+-              <label className="mb-2 block text-sm text-white/60">
++              <label className="mb-2 block text-sm text-muted">
+                 Gallery Images
+               </label>
+ 
+@@ -473,17 +473,17 @@ async function deleteProject(id: string) {
+                 value={form.images}
+                 onChange={handleChange}
+                 placeholder="/images/projects/img1.jpg, /images/projects/img2.jpg"
+-                className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++                className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+               />
+ 
+-              <p className="mt-2 text-xs text-white/30">
++              <p className="mt-2 text-xs text-faint">
+                 Separate multiple image paths with commas.
+               </p>
+             </div>
+ 
+             {/* MESSAGE */}
+             {message && (
+-              <div className="border border-white/10 bg-black px-4 py-3 text-sm text-[#d6ff3f]">
++              <div className="border border-line bg-white px-4 py-3 text-sm text-accent-strong">
+                 {message}
+               </div>
+             )}
+@@ -492,7 +492,7 @@ async function deleteProject(id: string) {
+             <button
+               type="submit"
+               disabled={loading}
+-              className="flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
++              className="flex items-center gap-3 bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+             >
+               <Plus size={18} />
+ 
+@@ -502,10 +502,10 @@ async function deleteProject(id: string) {
+           </form>
+ 
+ {/* CUSTOMER INQUIRIES */}
+-<section className="mt-10 border border-white/10 bg-[#0d0d0d] p-8">
++<section className="mt-10 border border-line bg-section p-8">
+ 
+   <div className="mb-8">
+-    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++    <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+       CUSTOMER INQUIRIES
+     </p>
+ 
+@@ -513,7 +513,7 @@ async function deleteProject(id: string) {
+       Project Enquiries
+     </h2>
+ 
+-    <p className="mt-2 text-sm text-white/40">
++    <p className="mt-2 text-sm text-subtle">
+       Messages submitted through the website contact form.
+     </p>
+   </div>
+@@ -521,14 +521,14 @@ async function deleteProject(id: string) {
+   <div className="space-y-4">
+ 
+     {inquiries.length === 0 ? (
+-      <p className="text-white/40">
++      <p className="text-subtle">
+         No inquiries found.
+       </p>
+     ) : (
+       inquiries.map((inquiry) => (
+         <div
+           key={inquiry._id}
+-          className="border border-white/10 bg-black p-6"
++          className="border border-line bg-white p-6"
+         >
+ 
+           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
+@@ -541,31 +541,31 @@ async function deleteProject(id: string) {
+                   {inquiry.name}
+                 </h3>
+ 
+-                <span className="border border-[#d6ff3f]/30 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[#d6ff3f]">
++                <span className="border border-accent/30 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-strong">
+                   {inquiry.status}
+                 </span>
+ 
+               </div>
+ 
+-              <div className="mt-3 space-y-1 text-sm text-white/50">
++              <div className="mt-3 space-y-1 text-sm text-muted">
+ 
+                 <p>
+                   Email:{" "}
+-                  <span className="text-white/80">
++                  <span className="text-body">
+                     {inquiry.email}
+                   </span>
+                 </p>
+ 
+                 <p>
+                   Phone:{" "}
+-                  <span className="text-white/80">
++                  <span className="text-body">
+                     {inquiry.phone}
+                   </span>
+                 </p>
+ 
+                 <p>
+                   Project Type:{" "}
+-                  <span className="text-white/80">
++                  <span className="text-body">
+                     {inquiry.projectType}
+                   </span>
+                 </p>
+@@ -574,19 +574,19 @@ async function deleteProject(id: string) {
+ 
+             </div>
+ 
+-            <p className="text-xs text-white/30">
++            <p className="text-xs text-faint">
+               {new Date(inquiry.createdAt).toLocaleString()}
+             </p>
+ 
+           </div>
+ 
+-          <div className="mt-5 border-t border-white/10 pt-5">
++          <div className="mt-5 border-t border-line pt-5">
+ 
+-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/30">
++            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-faint">
+               Project Details
+             </p>
+ 
+-            <p className="leading-7 text-white/70">
++            <p className="leading-7 text-body">
+               {inquiry.details}
+             </p>
+ 
+diff --git a/app/admin/login/page.tsx b/app/admin/login/page.tsx
+index ca6e430..da550e0 100644
+--- a/app/admin/login/page.tsx
++++ b/app/admin/login/page.tsx
+@@ -42,11 +42,11 @@ export default function AdminLoginPage() {
+   }
+ 
+   return (
+-    <main className="flex min-h-screen items-center justify-center bg-[#080808] px-6 text-white">
+-      <div className="w-full max-w-md border border-white/10 bg-[#101010] p-8">
++    <main className="flex min-h-screen items-center justify-center bg-page px-6 text-ink">
++      <div className="w-full max-w-md border border-line bg-card p-8">
+ 
+         <div className="mb-8 flex items-center gap-4">
+-          <div className="flex h-12 w-12 items-center justify-center bg-[#d6ff3f] text-black">
++          <div className="flex h-12 w-12 items-center justify-center bg-accent text-primary">
+             <LockKeyhole size={22} />
+           </div>
+ 
+@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
+               GLOARO ADMIN
+             </h1>
+ 
+-            <p className="text-sm text-white/40">
++            <p className="text-sm text-subtle">
+               Authorized access only
+             </p>
+           </div>
+@@ -64,7 +64,7 @@ export default function AdminLoginPage() {
+         <form onSubmit={handleLogin} className="space-y-5">
+ 
+           <div>
+-            <label className="mb-2 block text-sm text-white/60">
++            <label className="mb-2 block text-sm text-muted">
+               Email
+             </label>
+ 
+@@ -72,14 +72,14 @@ export default function AdminLoginPage() {
+               type="email"
+               value={email}
+               onChange={(e) => setEmail(e.target.value)}
+-              className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++              className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+               placeholder="admin@gloaro.com"
+               required
+             />
+           </div>
+ 
+           <div>
+-            <label className="mb-2 block text-sm text-white/60">
++            <label className="mb-2 block text-sm text-muted">
+               Password
+             </label>
+ 
+@@ -87,14 +87,14 @@ export default function AdminLoginPage() {
+               type="password"
+               value={password}
+               onChange={(e) => setPassword(e.target.value)}
+-              className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
++              className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+               placeholder="••••••••"
+               required
+             />
+           </div>
+ 
+           {error && (
+-            <p className="text-sm text-red-400">
++            <p className="text-sm text-red-600">
+               {error}
+             </p>
+           )}
+@@ -102,7 +102,7 @@ export default function AdminLoginPage() {
+           <button
+             type="submit"
+             disabled={loading}
+-            className="w-full bg-[#d6ff3f] px-5 py-3 font-bold text-black transition hover:bg-white disabled:opacity-50"
++            className="w-full bg-accent px-5 py-3 font-bold text-primary transition hover:bg-primary hover:text-white disabled:opacity-50"
+           >
+             {loading ? "SIGNING IN..." : "SIGN IN"}
+           </button>
+diff --git a/app/contact/page.tsx b/app/contact/page.tsx
+index 8b22ada..e6f5641 100644
+--- a/app/contact/page.tsx
++++ b/app/contact/page.tsx
+@@ -59,23 +59,23 @@ export default function ContactPage() {
+   }
+ 
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* NAVBAR */}
+-      <nav className="border-b border-white/10 bg-black">
++      <nav className="border-b border-line bg-white">
+         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
+ 
+           <Link href="/" className="flex items-center gap-3">
+-            <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
++            <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
+               <Building2 size={21} />
+             </div>
+ 
+             <div>
+               <div className="text-lg font-bold tracking-[0.2em]">
+-                GLO<span className="text-[#d6ff3f]">ARO</span>
++                GLO<span className="text-accent-strong">ARO</span>
+               </div>
+ 
+-              <div className="text-[9px] tracking-[0.35em] text-white/40">
++              <div className="text-[9px] tracking-[0.35em] text-subtle">
+                 CONSTRUCTION
+               </div>
+             </div>
+@@ -83,7 +83,7 @@ export default function ContactPage() {
+ 
+           <Link
+             href="/"
+-            className="flex items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]"
++            className="flex items-center gap-2 text-sm font-bold text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK HOME
+@@ -93,20 +93,20 @@ export default function ContactPage() {
+       </nav>
+ 
+       {/* HERO */}
+-      <section className="border-b border-white/10 py-24">
++      <section className="border-b border-line py-24">
+         <div className="mx-auto max-w-7xl px-6 lg:px-10">
+ 
+-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+             Start a Conversation
+           </p>
+ 
+           <h1 className="mt-5 max-w-4xl text-6xl font-black tracking-tight sm:text-8xl">
+             LET&apos;S BUILD
+             <br />
+-            <span className="text-white/30">SOMETHING GREAT.</span>
++            <span className="text-faint">SOMETHING GREAT.</span>
+           </h1>
+ 
+-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/50">
++          <p className="mt-8 max-w-2xl text-lg leading-8 text-muted">
+             Tell us about your project, your vision, and what you want to
+             build. Our team will get back to you.
+           </p>
+@@ -120,7 +120,7 @@ export default function ContactPage() {
+ 
+           {/* FORM */}
+           <div>
+-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+               Project Inquiry
+             </p>
+ 
+@@ -135,7 +135,7 @@ export default function ContactPage() {
+ 
+               <div className="grid gap-6 sm:grid-cols-2">
+                 <div>
+-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
++                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
+                     Name
+                   </label>
+ 
+@@ -143,12 +143,12 @@ export default function ContactPage() {
+   name="name"
+   type="text"
+   placeholder="Your name"
+-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
++                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
+                   />
+                 </div>
+ 
+                 <div>
+-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
++                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
+                     Email
+                   </label>
+ 
+@@ -156,14 +156,14 @@ export default function ContactPage() {
+   name="email"
+   type="email"
+   placeholder="you@example.com"
+-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
++                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
+                   />
+                 </div>
+               </div>
+ 
+               <div className="grid gap-6 sm:grid-cols-2">
+                 <div>
+-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
++                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
+                     Phone
+                   </label>
+ 
+@@ -171,19 +171,19 @@ export default function ContactPage() {
+   name="phone"
+   type="tel"
+   placeholder="+91"
+-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
++                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
+                   />
+                 </div>
+ 
+                 <div>
+-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
++                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
+                     Project Type
+                   </label>
+ 
+                  <select
+   name="projectType"
+   defaultValue=""
+-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition focus:border-[#d6ff3f]"
++                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition focus:border-accent"
+                   >
+                     <option value="" disabled>
+                       Select project type
+@@ -199,7 +199,7 @@ export default function ContactPage() {
+               </div>
+ 
+               <div>
+-                <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
++                <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
+                   Project Details
+                 </label>
+ 
+@@ -207,14 +207,14 @@ export default function ContactPage() {
+   name="details"
+   rows={7}
+                   placeholder="Tell us about your project..."
+-                  className="w-full resize-none border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
++                  className="w-full resize-none border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
+                 />
+               </div>
+ 
+               <button
+   type="submit"
+   disabled={loading}
+-  className="group flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
++  className="group flex items-center gap-3 bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+ >
+   {loading ? "SENDING..." : "SEND INQUIRY"}
+ 
+@@ -224,7 +224,7 @@ export default function ContactPage() {
+   />
+ </button>
+ {message && (
+-  <p className="text-sm font-medium text-[#d6ff3f]">
++  <p className="text-sm font-medium text-accent-strong">
+     {message}
+   </p>
+ )}  
+@@ -233,9 +233,9 @@ export default function ContactPage() {
+           </div>
+ 
+           {/* CONTACT INFO */}
+-          <div className="border-l border-white/10 pl-8 lg:pl-12">
++          <div className="border-l border-line pl-8 lg:pl-12">
+ 
+-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+               Contact
+             </p>
+ 
+@@ -243,7 +243,7 @@ export default function ContactPage() {
+               GLOARO CONSTRUCTION
+             </h2>
+ 
+-            <p className="mt-5 leading-7 text-white/50">
++            <p className="mt-5 leading-7 text-muted">
+               Have a question or planning a new project? Reach out directly.
+               We&apos;d be happy to hear from you.
+             </p>
+@@ -251,14 +251,14 @@ export default function ContactPage() {
+             <div className="mt-12 space-y-8">
+ 
+               <div className="flex gap-4">
+-                <MapPin className="mt-1 shrink-0 text-[#d6ff3f]" size={20} />
++                <MapPin className="mt-1 shrink-0 text-accent-strong" size={20} />
+ 
+                 <div>
+-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40">
++                  <p className="text-xs font-bold uppercase tracking-widest text-subtle">
+                     Visit Us
+                   </p>
+ 
+-                  <p className="mt-2 text-sm leading-6 text-white/70">
++                  <p className="mt-2 text-sm leading-6 text-body">
+                     SF No.101/2B, Esai Towers,
+                     <br />
+                     Salem Main Road,
+@@ -273,28 +273,28 @@ export default function ContactPage() {
+               </div>
+ 
+               <div className="flex gap-4">
+-                <Phone className="shrink-0 text-[#d6ff3f]" size={20} />
++                <Phone className="shrink-0 text-accent-strong" size={20} />
+ 
+                 <div>
+-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40">
++                  <p className="text-xs font-bold uppercase tracking-widest text-subtle">
+                     Phone
+                   </p>
+ 
+-                  <p className="mt-2 text-sm text-white/70">
++                  <p className="mt-2 text-sm text-body">
+                     +91 72000 73704
+                   </p>
+                 </div>
+               </div>
+ 
+               <div className="flex gap-4">
+-                <Mail className="shrink-0 text-[#d6ff3f]" size={20} />
++                <Mail className="shrink-0 text-accent-strong" size={20} />
+ 
+                 <div>
+-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40">
++                  <p className="text-xs font-bold uppercase tracking-widest text-subtle">
+                     Email
+                   </p>
+ 
+-                  <p className="mt-2 text-sm text-white/70">
++                  <p className="mt-2 text-sm text-body">
+                     info@gloaro.com
+                   </p>
+                 </div>
+@@ -308,7 +308,7 @@ export default function ContactPage() {
+       </section>
+ 
+       {/* BOTTOM CTA */}
+-      <section className="bg-[#d6ff3f] py-20 text-black">
++      <section className="bg-accent py-20 text-primary">
+         <div className="mx-auto max-w-7xl px-6 lg:px-10">
+ 
+           <p className="text-xs font-bold uppercase tracking-[0.3em]">
+@@ -325,7 +325,7 @@ export default function ContactPage() {
+ 
+             <Link
+               href="/"
+-              className="flex w-fit items-center gap-3 bg-black px-6 py-4 font-bold text-white transition hover:bg-white hover:text-black"
++              className="flex w-fit items-center gap-3 bg-primary px-6 py-4 font-bold text-white transition hover:bg-white hover:text-primary"
+             >
+               BACK HOME
+               <ArrowRight size={18} />
+diff --git a/app/globals.css b/app/globals.css
+index a2dc41e..e98e847 100644
+--- a/app/globals.css
++++ b/app/globals.css
+@@ -1,26 +1,63 @@
+ @import "tailwindcss";
+ 
++/*
++  GLOARO light theme
++  Single source of truth for the site palette. Components use the semantic
++  utilities below (bg-page, text-ink, border-line, bg-accent, ...) instead of
++  hardcoded hex values, so every section stays consistent.
++*/
+ :root {
+-  --background: #ffffff;
+-  --foreground: #171717;
++  /* Surfaces */
++  --page: #fafaf7; /* main page background */
++  --section: #f1f4f8; /* alternating section bands */
++  --card: #ffffff; /* cards, inputs, panels */
++
++  /* Text */
++  --ink: #0f172a; /* headings, strong text */
++  --body: #334155; /* body copy */
++  --muted: #475569; /* secondary copy */
++  --subtle: #64748b; /* captions, labels */
++  --faint: #94a3b8; /* decorative / de-emphasised headings */
++
++  /* Lines */
++  --line: #e2e8f0;
++  --line-strong: #cbd5e1;
++
++  /* Brand */
++  --primary: #0b2545; /* deep navy: buttons, footer, logo */
++  --accent: #f97316; /* safety orange: fills, CTAs */
++  --accent-strong: #c2410c; /* orange for text/links on light backgrounds */
+ }
+ 
+ @theme inline {
+-  --color-background: var(--background);
+-  --color-foreground: var(--foreground);
++  --color-page: var(--page);
++  --color-section: var(--section);
++  --color-card: var(--card);
++  --color-ink: var(--ink);
++  --color-body: var(--body);
++  --color-muted: var(--muted);
++  --color-subtle: var(--subtle);
++  --color-faint: var(--faint);
++  --color-line: var(--line);
++  --color-line-strong: var(--line-strong);
++  --color-primary: var(--primary);
++  --color-accent: var(--accent);
++  --color-accent-strong: var(--accent-strong);
+   --font-sans: var(--font-geist-sans);
+   --font-mono: var(--font-geist-mono);
+ }
+ 
+-@media (prefers-color-scheme: dark) {
+-  :root {
+-    --background: #0a0a0a;
+-    --foreground: #ededed;
+-  }
++html {
++  color-scheme: light;
+ }
+ 
+ body {
+-  background: var(--background);
+-  color: var(--foreground);
+-  font-family: Arial, Helvetica, sans-serif;
++  background: var(--page);
++  color: var(--ink);
++  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
++}
++
++::selection {
++  background: var(--accent);
++  color: var(--primary);
+ }
+diff --git a/app/page.tsx b/app/page.tsx
+index e474c09..1b0f5f0 100644
+--- a/app/page.tsx
++++ b/app/page.tsx
+@@ -108,7 +108,7 @@ const gallery = [
+     category: "Residential",
+     title: "Modern Living",
+     wide: true,
+-    overlay: "bg-black/20",
++    overlay: "bg-primary/5",
+     delay: 0.1,
+   },
+   {
+@@ -117,7 +117,7 @@ const gallery = [
+     category: "Interior",
+     title: "Fine Details",
+     wide: false,
+-    overlay: "bg-black/25",
++    overlay: "bg-primary/5",
+     delay: 0.25,
+   },
+   {
+@@ -126,7 +126,7 @@ const gallery = [
+     category: "Commercial",
+     title: "Bold Spaces",
+     wide: false,
+-    overlay: "bg-black/25",
++    overlay: "bg-primary/5",
+     delay: 0.4,
+   },
+   {
+@@ -135,7 +135,7 @@ const gallery = [
+     category: "Architecture",
+     title: "Designed To Last",
+     wide: true,
+-    overlay: "bg-black/20",
++    overlay: "bg-primary/5",
+     delay: 0.55,
+   },
+ ];
+@@ -225,31 +225,31 @@ export default function Home() {
+ 
+   return (
+     <MotionConfig reducedMotion="user">
+-      <main className="min-h-screen overflow-hidden bg-[#080808] text-white">
++      <main className="min-h-screen overflow-hidden bg-page text-ink">
+         {/* SCROLL PROGRESS BAR */}
+         <motion.div
+           style={{ scaleX }}
+-          className="fixed left-0 right-0 top-0 z-[60] h-1 origin-left bg-[#d6ff3f]"
++          className="fixed left-0 right-0 top-0 z-[60] h-1 origin-left bg-accent"
+         />
+ 
+         {/* NAVBAR */}
+-        <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-xl">
++        <nav className="fixed left-0 right-0 top-0 z-50 border-b border-line bg-white/85 backdrop-blur-xl">
+           <div
+             className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-300 lg:px-10 ${
+               scrolled ? "h-16" : "h-20"
+             }`}
+           >
+             <a href="#home" className="flex items-center gap-3">
+-              <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
++              <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
+                 <Building2 size={21} />
+               </div>
+ 
+               <div>
+                 <div className="text-lg font-bold tracking-[0.2em]">
+-                  GLO<span className="text-[#d6ff3f]">ARO</span>
++                  GLO<span className="text-accent-strong">ARO</span>
+                 </div>
+ 
+-                <div className="text-[9px] tracking-[0.35em] text-white/40">
++                <div className="text-[9px] tracking-[0.35em] text-subtle">
+                   CONSTRUCTION
+                 </div>
+               </div>
+@@ -261,11 +261,11 @@ export default function Home() {
+                   <a
+                     key={item}
+                     href={`#${item.toLowerCase()}`}
+-                    className="group relative text-sm text-white/70 transition hover:text-white"
++                    className="group relative text-sm text-body transition hover:text-ink"
+                   >
+                     {item}
+ 
+-                    <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#d6ff3f] transition-all duration-300 group-hover:w-full" />
++                    <span className="absolute -bottom-2 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+                   </a>
+                 ),
+               )}
+@@ -273,7 +273,7 @@ export default function Home() {
+ 
+             <Link
+               href="/admin"
+-              className="hidden items-center gap-2 bg-[#d6ff3f] px-5 py-3 text-sm font-bold text-black transition hover:bg-white md:flex"
++              className="hidden items-center gap-2 bg-accent px-5 py-3 text-sm font-bold text-primary transition hover:bg-primary hover:text-white md:flex"
+             >
+               ADMIN
+               <ArrowRight size={16} />
+@@ -289,14 +289,14 @@ export default function Home() {
+           </div>
+ 
+           {menuOpen && (
+-            <div className="border-t border-white/10 bg-black px-6 py-5 md:hidden">
++            <div className="border-t border-line bg-white px-6 py-5 md:hidden">
+               {["Home", "About", "Services", "Projects", "Contact"].map(
+                 (item) => (
+                   <a
+                     key={item}
+                     href={`#${item.toLowerCase()}`}
+                     onClick={() => setMenuOpen(false)}
+-                    className="block border-b border-white/10 py-4 text-white/80"
++                    className="block border-b border-line py-4 text-body"
+                   >
+                     {item}
+                   </a>
+@@ -305,7 +305,7 @@ export default function Home() {
+               <Link
+                 href="/admin"
+                 onClick={() => setMenuOpen(false)}
+-                className="block py-4 font-bold text-[#d6ff3f]"
++                className="block py-4 font-bold text-accent-strong"
+               >
+                 ADMIN
+               </Link>
+@@ -328,22 +328,22 @@ export default function Home() {
+             }}
+           />
+ 
+-          {/* Dark overlay */}
+-          <div className="absolute inset-0 bg-black/65" />
++          {/* Light overlay */}
++          <div className="absolute inset-0 bg-gradient-to-r from-page via-page/85 to-page/25" />
+ 
+-          {/* Lime glow */}
+-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(214,255,63,0.12),transparent_30%),radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05),transparent_25%)]" />
++          {/* Warm accent glow */}
++          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(249,115,22,0.10),transparent_35%)]" />
+ 
+           {/* Slowly rotating circles */}
+           <motion.div
+             animate={{ rotate: 360 }}
+             transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+-            className="absolute right-[-10%] top-[15%] h-[600px] w-[600px] rounded-full border border-dashed border-white/10"
++            className="absolute right-[-10%] top-[15%] h-[600px] w-[600px] rounded-full border border-dashed border-line"
+           />
+           <motion.div
+             animate={{ rotate: -360 }}
+             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+-            className="absolute right-[-5%] top-[20%] h-[500px] w-[500px] rounded-full border border-dashed border-[#d6ff3f]/20"
++            className="absolute right-[-5%] top-[20%] h-[500px] w-[500px] rounded-full border border-dashed border-accent/30"
+           />
+ 
+           {/* Main hero content (fades on scroll) */}
+@@ -359,9 +359,9 @@ export default function Home() {
+                 transition={{ duration: 0.7 }}
+                 className="mb-8 flex items-center gap-3"
+               >
+-                <span className="h-px w-12 bg-[#d6ff3f]" />
++                <span className="h-px w-12 bg-accent" />
+ 
+-                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d6ff3f]">
++                <span className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-strong">
+                   Building Beyond Boundaries
+                 </span>
+               </motion.div>
+@@ -375,7 +375,7 @@ export default function Home() {
+               >
+                 WE BUILD
+                 <br />
+-                <span className="text-[#d6ff3f]">THE FUTURE.</span>
++                <span className="text-accent-strong">THE FUTURE.</span>
+               </motion.h1>
+ 
+               {/* Description */}
+@@ -383,7 +383,7 @@ export default function Home() {
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.7, delay: 0.3 }}
+-                className="mt-8 max-w-xl text-lg leading-8 text-white/70"
++                className="mt-8 max-w-xl text-lg leading-8 text-body"
+               >
+                 From ambitious architectural concepts to extraordinary
+                 completed spaces, we transform ideas into structures built to
+@@ -399,7 +399,7 @@ export default function Home() {
+               >
+                 <a
+                   href="#projects"
+-                  className="group flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white"
++                  className="group flex items-center gap-3 bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white"
+                 >
+                   EXPLORE PROJECTS
+                   <ArrowRight
+@@ -415,16 +415,16 @@ export default function Home() {
+           <motion.div
+             animate={{ y: [0, 10, 0] }}
+             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.4em] text-white/50"
++            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.4em] text-muted"
+           >
+             Scroll to explore
+           </motion.div>
+         </section>
+ 
+         {/* MARQUEE STRIP */}
+-        <section className="overflow-hidden bg-[#d6ff3f] py-4">
++        <section className="overflow-hidden bg-accent py-4">
+           <motion.div
+-            className="flex w-max whitespace-nowrap text-sm font-black uppercase tracking-[0.3em] text-black"
++            className="flex w-max whitespace-nowrap text-sm font-black uppercase tracking-[0.3em] text-primary"
+             animate={{ x: ["0%", "-50%"] }}
+             transition={{ duration: 30, ease: "linear", repeat: Infinity }}
+           >
+@@ -437,7 +437,7 @@ export default function Home() {
+         </section>
+ 
+         {/* STATS */}
+-        <section className="border-y border-white/10 bg-[#0d0d0d]">
++        <section className="border-y border-line bg-section">
+           <div className="mx-auto grid max-w-7xl grid-cols-2 lg:grid-cols-4">
+             {stats.map((stat, index) => (
+               <motion.div
+@@ -446,13 +446,13 @@ export default function Home() {
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: index * 0.1 }}
+-                className="border-r border-white/10 px-6 py-12 last:border-r-0"
++                className="border-r border-line px-6 py-12 last:border-r-0"
+               >
+-                <p className="text-4xl font-black text-[#d6ff3f]">
++                <p className="text-4xl font-black text-accent-strong">
+                   <Counter value={stat.value} />
+                 </p>
+ 
+-                <p className="mt-2 text-xs uppercase tracking-[0.15em] text-white/40">
++                <p className="mt-2 text-xs uppercase tracking-[0.15em] text-subtle">
+                   {stat.label}
+                 </p>
+               </motion.div>
+@@ -464,21 +464,21 @@ export default function Home() {
+         <section id="about" className="mx-auto max-w-7xl px-6 py-32 lg:px-10">
+           <div className="grid gap-16 lg:grid-cols-2">
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+                 Who We Are
+               </p>
+ 
+               <h2 className="mt-5 text-5xl font-black tracking-tight sm:text-6xl">
+                 <WordReveal text="MORE THAN" />
+                 <br />
+-                <span className="text-white/30">
++                <span className="text-faint">
+                   <WordReveal text="CONSTRUCTION." />
+                 </span>
+               </h2>
+             </div>
+ 
+             <div className="flex flex-col justify-end">
+-              <p className="text-xl leading-9 text-white/50">
++              <p className="text-xl leading-9 text-muted">
+                 We create spaces that combine engineering, architecture and
+                 human experience. Every project is treated as an opportunity to
+                 build something meaningful.
+@@ -486,7 +486,7 @@ export default function Home() {
+ 
+               <Link
+                 href="/about"
+-                className="mt-8 flex w-fit items-center gap-3 border-b border-[#d6ff3f] pb-2 font-bold text-[#d6ff3f] transition hover:text-white"
++                className="mt-8 flex w-fit items-center gap-3 border-b border-accent pb-2 font-bold text-accent-strong transition hover:text-ink"
+               >
+                 DISCOVER OUR STORY
+                 <ArrowRight size={18} />
+@@ -496,7 +496,7 @@ export default function Home() {
+         </section>
+ 
+         {/* WHY CHOOSE US */}
+-        <section className="border-y border-white/10 bg-[#0d0d0d] py-24">
++        <section className="border-y border-line bg-section py-24">
+           <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+             {/* IMAGE */}
+             <motion.div
+@@ -504,7 +504,7 @@ export default function Home() {
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.7 }}
+-              className="relative min-h-[420px] overflow-hidden border border-white/10"
++              className="relative min-h-[420px] overflow-hidden border border-line"
+             >
+               <img
+                 src="/images/about/worker.jpg"
+@@ -512,14 +512,14 @@ export default function Home() {
+                 className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-105"
+               />
+ 
+-              <div className="absolute inset-0 bg-black/30" />
+-              <div className="absolute bottom-0 left-0 h-1 w-32 bg-[#d6ff3f]" />
++              <div className="absolute inset-0 bg-primary/10" />
++              <div className="absolute bottom-0 left-0 h-1 w-32 bg-accent" />
+ 
+-              <div className="absolute bottom-6 left-6 border border-white/10 bg-black/70 px-5 py-3 backdrop-blur-md">
+-                <p className="text-xs uppercase tracking-[0.25em] text-[#d6ff3f]">
++              <div className="absolute bottom-6 left-6 border border-line bg-white/90 px-5 py-3 backdrop-blur-md">
++                <p className="text-xs uppercase tracking-[0.25em] text-accent-strong">
+                   GLOARO Construction
+                 </p>
+-                <p className="mt-1 text-sm text-white/70">
++                <p className="mt-1 text-sm text-body">
+                   Built with precision
+                 </p>
+               </div>
+@@ -528,14 +528,14 @@ export default function Home() {
+             {/* CONTENT */}
+             <div className="flex flex-col justify-center">
+               <div>
+-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++                <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+                   Why Choose Us
+                 </p>
+ 
+                 <h2 className="mt-4 text-5xl font-black tracking-tight sm:text-6xl">
+                   <WordReveal text="BUILT ON" />
+                   <br />
+-                  <span className="text-white/30">
++                  <span className="text-faint">
+                     <WordReveal text="TRUST." />
+                   </span>
+                 </h2>
+@@ -549,14 +549,14 @@ export default function Home() {
+                     whileInView={{ opacity: 1, x: 0 }}
+                     viewport={{ once: true }}
+                     transition={{ delay: index * 0.1 }}
+-                    className="flex items-center gap-5 border-b border-white/10 pb-5"
++                    className="flex items-center gap-5 border-b border-line pb-5"
+                   >
+                     <CheckCircle2
+-                      className="shrink-0 text-[#d6ff3f]"
++                      className="shrink-0 text-accent-strong"
+                       size={22}
+                     />
+ 
+-                    <span className="text-lg text-white/70">{reason}</span>
++                    <span className="text-lg text-body">{reason}</span>
+                   </motion.div>
+                 ))}
+               </div>
+@@ -565,11 +565,11 @@ export default function Home() {
+         </section>
+ 
+         {/* PROJECTS */}
+-        <section id="projects" className="bg-[#080808] py-32">
++        <section id="projects" className="bg-page py-32">
+           <div className="mx-auto max-w-7xl px-6 lg:px-10">
+             <div className="mb-16 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+               <div>
+-                <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++                <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+                   Selected Work
+                 </p>
+ 
+@@ -587,7 +587,7 @@ export default function Home() {
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ delay: index * 0.12 }}
+-                  className="group relative h-[460px] overflow-hidden border border-white/10 bg-[#151515]"
++                  className="group relative h-[460px] overflow-hidden border border-line bg-card"
+                 >
+                   {project.coverImage ? (
+                     <img
+@@ -596,27 +596,27 @@ export default function Home() {
+                       className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                     />
+                   ) : (
+-                    <div className="absolute inset-0 bg-gradient-to-br from-[#303030] via-[#151515] to-black transition duration-700 group-hover:scale-105" />
++                    <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-white transition duration-700 group-hover:scale-105" />
+                   )}
+ 
+-                  <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_45%,rgba(214,255,63,0.08))]" />
++                  <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_45%,rgba(249,115,22,0.08))]" />
+ 
+-                  <div className="absolute left-6 top-6 text-sm text-white/30">
++                  <div className="absolute left-6 top-6 bg-white/90 px-2.5 py-1 text-xs font-bold text-primary">
+                     {String(index + 1).padStart(2, "0")}
+                   </div>
+ 
+-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-7">
+-                    <p className="mb-2 text-xs uppercase tracking-[0.2em] text-[#d6ff3f]">
++                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/90 to-transparent p-7">
++                    <p className="mb-2 text-xs uppercase tracking-[0.2em] text-accent-strong">
+                       {project.category}
+                     </p>
+ 
+                     <h3 className="text-3xl font-bold">{project.title}</h3>
+ 
+-                    <p className="mt-2 text-sm text-white/40">
++                    <p className="mt-2 text-sm text-subtle">
+                       {project.location}
+                     </p>
+ 
+-                    <div className="mt-6 flex h-0 items-center gap-2 overflow-hidden text-sm font-bold text-[#d6ff3f] transition-all duration-300 group-hover:h-6">
++                    <div className="mt-6 flex h-0 items-center gap-2 overflow-hidden text-sm font-bold text-accent-strong transition-all duration-300 group-hover:h-6">
+                       <Link href={`/projects/${project.slug}`}>
+                         VIEW PROJECT →
+                       </Link>
+@@ -636,7 +636,7 @@ export default function Home() {
+         >
+           <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+                 What We Do
+               </p>
+ 
+@@ -646,7 +646,7 @@ export default function Home() {
+             </div>
+           </div>
+ 
+-          <div className="grid grid-cols-1 border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-3">
++          <div className="grid grid-cols-1 border-l border-t border-line sm:grid-cols-2 lg:grid-cols-3">
+             {services.map((service) => {
+               const Icon = service.icon;
+ 
+@@ -659,9 +659,9 @@ export default function Home() {
+                   <motion.div
+                     whileHover={{ y: -4 }}
+                     transition={{ duration: 0.25 }}
+-                    className="group relative min-h-[240px] border-b border-r border-white/10 bg-[#080808] p-8 transition-all duration-300 hover:bg-[#d6ff3f]"
++                    className="group relative min-h-[240px] border-b border-r border-line bg-page p-8 transition-all duration-300 hover:bg-accent"
+                   >
+-                    <span className="text-sm font-medium text-[#d6ff3f] transition-colors duration-300 group-hover:text-black">
++                    <span className="text-sm font-medium text-accent-strong transition-colors duration-300 group-hover:text-primary">
+                       {service.number}
+                     </span>
+ 
+@@ -674,18 +674,18 @@ export default function Home() {
+                       <Icon
+                         size={34}
+                         strokeWidth={1.5}
+-                        className="text-[#d6ff3f] transition-colors duration-300 group-hover:text-black"
++                        className="text-accent-strong transition-colors duration-300 group-hover:text-primary"
+                       />
+                     </motion.div>
+ 
+-                    <h3 className="mt-6 max-w-[260px] text-xl font-bold text-white transition-colors duration-300 group-hover:text-black">
++                    <h3 className="mt-6 max-w-[260px] text-xl font-bold text-ink transition-colors duration-300 group-hover:text-primary">
+                       {service.title}
+                     </h3>
+ 
+                     <ArrowRight
+                       size={26}
+                       strokeWidth={1.5}
+-                      className="absolute bottom-7 right-7 text-white transition-all duration-300 group-hover:translate-x-2 group-hover:text-black"
++                      className="absolute bottom-7 right-7 text-ink transition-all duration-300 group-hover:translate-x-2 group-hover:text-primary"
+                     />
+                   </motion.div>
+                 </Link>
+@@ -695,10 +695,10 @@ export default function Home() {
+         </section>
+ 
+         {/* GALLERY */}
+-        <section className="border-y border-white/10 bg-[#0d0d0d] py-32">
++        <section className="border-y border-line bg-section py-32">
+           <div className="mx-auto max-w-7xl px-6 lg:px-10">
+             <div className="mb-14">
+-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+                 Our Work
+               </p>
+ 
+@@ -730,15 +730,17 @@ export default function Home() {
+                   />
+ 
+                   <div
+-                    className={`absolute inset-0 ${item.overlay} transition group-hover:bg-[#d6ff3f]/10`}
++                    className={`absolute inset-0 ${item.overlay} transition group-hover:bg-accent/15`}
+                   />
+ 
+-                  <div className="absolute bottom-5 left-5">
+-                    <p className="text-xs uppercase tracking-widest text-white/70">
++                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent p-5 pt-16">
++                    <p className="text-xs uppercase tracking-widest text-white/80">
+                       {item.category}
+                     </p>
+ 
+-                    <p className="mt-1 text-xl font-bold">{item.title}</p>
++                    <p className="mt-1 text-xl font-bold text-white">
++                      {item.title}
++                    </p>
+                   </div>
+                 </motion.div>
+               ))}
+@@ -749,9 +751,9 @@ export default function Home() {
+         {/* CONTACT */}
+         <section
+           id="contact"
+-          className="relative overflow-hidden bg-[#d6ff3f] py-28 text-black"
++          className="relative overflow-hidden bg-accent py-28 text-primary"
+         >
+-          <div className="absolute right-[-100px] top-[-150px] h-[400px] w-[400px] rounded-full border border-black/10" />
++          <div className="absolute right-[-100px] top-[-150px] h-[400px] w-[400px] rounded-full border border-primary/10" />
+ 
+           <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+             <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+@@ -769,7 +771,7 @@ export default function Home() {
+ 
+               <Link
+                 href="/contact"
+-                className="flex items-center gap-3 bg-black px-7 py-5 font-bold text-white transition hover:bg-white hover:text-black"
++                className="flex items-center gap-3 bg-primary px-7 py-5 font-bold text-white transition hover:bg-white hover:text-primary"
+               >
+                 GET IN TOUCH
+                 <ArrowRight size={18} />
+@@ -779,7 +781,7 @@ export default function Home() {
+         </section>
+ 
+         {/* FOOTER */}
+-        <footer className="border-t border-white/10 bg-black">
++        <footer className="border-t border-white/10 bg-primary text-white">
+           <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-3 lg:px-10">
+             {/* Company */}
+             <div>
+@@ -787,30 +789,30 @@ export default function Home() {
+                 GLOARO
+               </p>
+ 
+-              <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/40">
++              <p className="mt-2 text-xs uppercase tracking-[0.3em] text-white/55">
+                 Construction
+               </p>
+ 
+-              <p className="mt-6 max-w-xs text-sm leading-6 text-white/40">
++              <p className="mt-6 max-w-xs text-sm leading-6 text-white/55">
+                 Building better spaces with quality, precision and innovation.
+               </p>
+             </div>
+ 
+             {/* Address */}
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">
+                 Visit Us
+               </p>
+ 
+-              <p className="mt-4 text-sm text-white/50">
++              <p className="mt-4 text-sm text-white/65">
+                 Prefer to reach out directly? Here&apos;s how to find us.
+               </p>
+ 
+               <div className="mt-6 space-y-5">
+                 <div className="flex gap-4">
+-                  <MapPin className="mt-1 shrink-0 text-[#d6ff3f]" size={20} />
++                  <MapPin className="mt-1 shrink-0 text-accent" size={20} />
+ 
+-                  <p className="text-sm leading-6 text-white/70">
++                  <p className="text-sm leading-6 text-white/75">
+                     SF No.101/2B, Esai Towers, Salem Main Road,
+                     <br />
+                     Near Bypass, Emmaper, Kallakurichi – 606202,
+@@ -820,24 +822,24 @@ export default function Home() {
+                 </div>
+ 
+                 <div className="flex items-center gap-4">
+-                  <Phone className="shrink-0 text-[#d6ff3f]" size={18} />
+-                  <p className="text-sm text-white/70">+91 72000 73704</p>
++                  <Phone className="shrink-0 text-accent" size={18} />
++                  <p className="text-sm text-white/75">+91 72000 73704</p>
+                 </div>
+ 
+                 <div className="flex items-center gap-4">
+-                  <Mail className="shrink-0 text-[#d6ff3f]" size={18} />
+-                  <p className="text-sm text-white/70">info@gloaro.com</p>
++                  <Mail className="shrink-0 text-accent" size={18} />
++                  <p className="text-sm text-white/75">info@gloaro.com</p>
+                 </div>
+               </div>
+             </div>
+ 
+             {/* Contact */}
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent">
+                 Contact
+               </p>
+ 
+-              <p className="mt-4 text-sm leading-7 text-white/60">
++              <p className="mt-4 text-sm leading-7 text-white/65">
+                 Get in touch with us
+                 <br />
+                 for your next project.
+@@ -847,7 +849,7 @@ export default function Home() {
+ 
+           {/* Bottom bar */}
+           <div className="border-t border-white/10">
+-            <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-white/30 sm:flex-row lg:px-10">
++            <div className="mx-auto flex max-w-7xl flex-col justify-between gap-3 px-6 py-6 text-xs text-white/45 sm:flex-row lg:px-10">
+               <p>© {new Date().getFullYear()} GLOARO. All rights reserved.</p>
+               <p>BUILDING THE FUTURE.</p>
+             </div>
+diff --git a/app/projects/[slug]/page.tsx b/app/projects/[slug]/page.tsx
+index 7c95f8d..ab92df7 100644
+--- a/app/projects/[slug]/page.tsx
++++ b/app/projects/[slug]/page.tsx
+@@ -21,20 +21,20 @@ export default async function ProjectDetailsPage({ params }: Props) {
+   }
+ 
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HEADER */}
+-      <section className="border-b border-white/10 px-6 py-16">
++      <section className="border-b border-line px-6 py-16">
+         <div className="mx-auto max-w-7xl">
+ 
+           <Link
+             href="/#projects"
+-            className="mb-8 inline-block text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="mb-8 inline-block text-sm text-muted transition hover:text-accent-strong"
+           >
+             ← Back to Projects
+           </Link>
+ 
+-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++          <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+             {project.category}
+           </p>
+ 
+@@ -42,7 +42,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
+             {project.title}
+           </h1>
+ 
+-          <div className="mt-6 flex flex-wrap gap-6 text-sm text-white/50">
++          <div className="mt-6 flex flex-wrap gap-6 text-sm text-muted">
+             <span>{project.location}</span>
+ 
+             {project.year && (
+@@ -72,7 +72,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
+       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-3">
+ 
+         <div>
+-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+             Project Details
+           </p>
+ 
+@@ -82,7 +82,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
+         </div>
+ 
+         <div className="md:col-span-2">
+-          <p className="text-lg leading-8 text-white/60">
++          <p className="text-lg leading-8 text-muted">
+             {project.description}
+           </p>
+         </div>
+@@ -94,7 +94,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
+         <section className="mx-auto max-w-7xl px-6 py-16">
+ 
+           <div className="mb-10">
+-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+               Our Work
+             </p>
+ 
+@@ -124,12 +124,12 @@ export default async function ProjectDetailsPage({ params }: Props) {
+       )}
+ 
+       {/* BACK */}
+-      <section className="border-t border-white/10 px-6 py-16">
++      <section className="border-t border-line px-6 py-16">
+         <div className="mx-auto max-w-7xl">
+ 
+           <Link
+             href="/#projects"
+-            className="inline-flex bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white"
++            className="inline-flex bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white"
+           >
+             ← BACK TO PROJECTS
+           </Link>
+diff --git a/app/services/architecture-design/page.tsx b/app/services/architecture-design/page.tsx
+index 6d7aeeb..9189358 100644
+--- a/app/services/architecture-design/page.tsx
++++ b/app/services/architecture-design/page.tsx
+@@ -10,7 +10,7 @@ import {
+ 
+ export default function ArchitectureDesignPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HERO */}
+       <section className="px-6 pb-20 pt-32 lg:px-10">
+@@ -18,14 +18,14 @@ export default function ArchitectureDesignPage() {
+ 
+           <Link
+             href="/#services"
+-            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK TO SERVICES
+           </Link>
+ 
+           <div className="mt-16">
+-            <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+               GLOARO CONSTRUCTION
+             </p>
+ 
+@@ -35,7 +35,7 @@ export default function ArchitectureDesignPage() {
+               & DESIGN
+             </h1>
+ 
+-            <p className="mt-8 max-w-xl text-lg leading-8 text-white/50">
++            <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
+               We create thoughtful architectural designs that combine
+               functionality, modern aesthetics, and practical construction
+               solutions.
+@@ -46,11 +46,11 @@ export default function ArchitectureDesignPage() {
+       </section>
+ 
+       {/* INTRO */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-20 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-20 lg:px-10">
+         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHAT WE DO
+             </p>
+ 
+@@ -62,12 +62,12 @@ export default function ArchitectureDesignPage() {
+           </div>
+ 
+           <div>
+-            <p className="text-lg leading-8 text-white/50">
++            <p className="text-lg leading-8 text-muted">
+               We develop architectural concepts that balance aesthetics,
+               functionality, space, and construction requirements.
+             </p>
+ 
+-            <p className="mt-6 text-lg leading-8 text-white/50">
++            <p className="mt-6 text-lg leading-8 text-muted">
+               Every design is developed with practical execution and the
+               long-term use of the space in mind.
+             </p>
+@@ -80,7 +80,7 @@ export default function ArchitectureDesignPage() {
+       <section className="px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             OUR EXPERTISE
+           </p>
+ 
+@@ -88,7 +88,7 @@ export default function ArchitectureDesignPage() {
+             WHAT WE PROVIDE
+           </h2>
+ 
+-          <div className="mt-12 grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
++          <div className="mt-12 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -121,23 +121,23 @@ export default function ArchitectureDesignPage() {
+               return (
+                 <div
+                   key={item.number}
+-                  className="group min-h-[280px] border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
++                  className="group min-h-[280px] border-b border-r border-line p-8 transition duration-300 hover:bg-accent hover:text-primary"
+                 >
+-                  <span className="text-sm font-bold text-[#d6ff3f] group-hover:text-black">
++                  <span className="text-sm font-bold text-accent-strong group-hover:text-primary">
+                     {item.number}
+                   </span>
+ 
+                   <Icon
+                     size={34}
+                     strokeWidth={1.5}
+-                    className="mt-12 text-[#d6ff3f] group-hover:text-black"
++                    className="mt-12 text-accent-strong group-hover:text-primary"
+                   />
+ 
+                   <h3 className="mt-6 text-xl font-bold">
+                     {item.title}
+                   </h3>
+ 
+-                  <p className="mt-4 text-sm leading-6 text-white/40 group-hover:text-black/60">
++                  <p className="mt-4 text-sm leading-6 text-subtle group-hover:text-primary/70">
+                     {item.text}
+                   </p>
+                 </div>
+@@ -149,10 +149,10 @@ export default function ArchitectureDesignPage() {
+       </section>
+ 
+       {/* PROCESS */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-24 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             HOW WE WORK
+           </p>
+ 
+@@ -160,7 +160,7 @@ export default function ArchitectureDesignPage() {
+             OUR PROCESS
+           </h2>
+ 
+-          <div className="mt-14 grid border-l border-t border-white/10 md:grid-cols-4">
++          <div className="mt-14 grid border-l border-t border-line md:grid-cols-4">
+ 
+             {[
+               ["01", "DISCOVERY", "Understanding your vision, needs, and project requirements."],
+@@ -168,12 +168,12 @@ export default function ArchitectureDesignPage() {
+               ["03", "DEVELOPMENT", "Refining the design and preparing practical solutions."],
+               ["04", "DELIVERY", "Finalizing the design for the next stage of the project."],
+             ].map(([number, title, text]) => (
+-              <div key={number} className="border-b border-r border-white/10 p-8">
+-                <span className="text-[#d6ff3f]">{number}</span>
++              <div key={number} className="border-b border-r border-line p-8">
++                <span className="text-accent-strong">{number}</span>
+ 
+                 <h3 className="mt-8 text-xl font-bold">{title}</h3>
+ 
+-                <p className="mt-4 text-sm leading-6 text-white/40">
++                <p className="mt-4 text-sm leading-6 text-subtle">
+                   {text}
+                 </p>
+               </div>
+@@ -188,7 +188,7 @@ export default function ArchitectureDesignPage() {
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHY GLOARO
+             </p>
+ 
+@@ -208,9 +208,9 @@ export default function ArchitectureDesignPage() {
+             ].map((item) => (
+               <div
+                 key={item}
+-                className="flex items-center gap-4 border-b border-white/10 pb-6"
++                className="flex items-center gap-4 border-b border-line pb-6"
+               >
+-                <div className="flex h-8 w-8 items-center justify-center bg-[#d6ff3f] text-black">
++                <div className="flex h-8 w-8 items-center justify-center bg-accent text-primary">
+                   <Check size={17} />
+                 </div>
+ 
+@@ -223,7 +223,7 @@ export default function ArchitectureDesignPage() {
+       </section>
+ 
+       {/* CTA */}
+-      <section className="border-t border-white/10 bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="border-t border-line bg-accent px-6 py-20 text-primary lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+           <p className="text-sm font-bold tracking-[0.25em]">
+diff --git a/app/services/commercial-construction/page.tsx b/app/services/commercial-construction/page.tsx
+index d9d695b..fd51080 100644
+--- a/app/services/commercial-construction/page.tsx
++++ b/app/services/commercial-construction/page.tsx
+@@ -10,7 +10,7 @@ import {
+ 
+ export default function CommercialConstructionPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HERO */}
+       <section className="px-6 pb-20 pt-32 lg:px-10">
+@@ -18,7 +18,7 @@ export default function CommercialConstructionPage() {
+ 
+           <Link
+             href="/#services"
+-            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK TO SERVICES
+@@ -27,7 +27,7 @@ export default function CommercialConstructionPage() {
+           <div className="mt-16 grid items-end gap-12 lg:grid-cols-2">
+ 
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+                 GLOARO CONSTRUCTION
+               </p>
+ 
+@@ -37,7 +37,7 @@ export default function CommercialConstructionPage() {
+                 CONSTRUCTION
+               </h1>
+ 
+-              <p className="mt-8 max-w-xl text-lg leading-8 text-white/50">
++              <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
+                 We build high-quality commercial spaces with efficient
+                 planning, modern construction techniques, and dependable
+                 project execution.
+@@ -49,11 +49,11 @@ export default function CommercialConstructionPage() {
+       </section>
+ 
+       {/* INTRO */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-20 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-20 lg:px-10">
+         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHAT WE DO
+             </p>
+ 
+@@ -65,13 +65,13 @@ export default function CommercialConstructionPage() {
+           </div>
+ 
+           <div>
+-            <p className="text-lg leading-8 text-white/50">
++            <p className="text-lg leading-8 text-muted">
+               From offices and retail spaces to larger commercial
+               developments, we provide structured construction solutions
+               designed around your business requirements.
+             </p>
+ 
+-            <p className="mt-6 text-lg leading-8 text-white/50">
++            <p className="mt-6 text-lg leading-8 text-muted">
+               Our team coordinates planning, construction, quality control,
+               and project delivery to keep every stage organized.
+             </p>
+@@ -85,7 +85,7 @@ export default function CommercialConstructionPage() {
+         <div className="mx-auto max-w-7xl">
+ 
+           <div className="mb-12">
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               OUR EXPERTISE
+             </p>
+ 
+@@ -94,7 +94,7 @@ export default function CommercialConstructionPage() {
+             </h2>
+           </div>
+ 
+-          <div className="grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
++          <div className="grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -127,23 +127,23 @@ export default function CommercialConstructionPage() {
+               return (
+                 <div
+                   key={item.number}
+-                  className="group min-h-[280px] border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
++                  className="group min-h-[280px] border-b border-r border-line p-8 transition duration-300 hover:bg-accent hover:text-primary"
+                 >
+-                  <span className="text-sm font-bold text-[#d6ff3f] group-hover:text-black">
++                  <span className="text-sm font-bold text-accent-strong group-hover:text-primary">
+                     {item.number}
+                   </span>
+ 
+                   <Icon
+                     size={34}
+                     strokeWidth={1.5}
+-                    className="mt-12 text-[#d6ff3f] group-hover:text-black"
++                    className="mt-12 text-accent-strong group-hover:text-primary"
+                   />
+ 
+                   <h3 className="mt-6 text-xl font-bold">
+                     {item.title}
+                   </h3>
+ 
+-                  <p className="mt-4 text-sm leading-6 text-white/40 group-hover:text-black/60">
++                  <p className="mt-4 text-sm leading-6 text-subtle group-hover:text-primary/70">
+                     {item.text}
+                   </p>
+                 </div>
+@@ -155,10 +155,10 @@ export default function CommercialConstructionPage() {
+       </section>
+ 
+       {/* PROCESS */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-24 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             HOW WE WORK
+           </p>
+ 
+@@ -166,7 +166,7 @@ export default function CommercialConstructionPage() {
+             OUR PROCESS
+           </h2>
+ 
+-          <div className="mt-14 grid border-l border-t border-white/10 md:grid-cols-4">
++          <div className="mt-14 grid border-l border-t border-line md:grid-cols-4">
+ 
+             {[
+               ["01", "CONSULTATION", "Understanding your business requirements and project goals."],
+@@ -176,15 +176,15 @@ export default function CommercialConstructionPage() {
+             ].map(([number, title, text]) => (
+               <div
+                 key={number}
+-                className="border-b border-r border-white/10 p-8"
++                className="border-b border-r border-line p-8"
+               >
+-                <span className="text-[#d6ff3f]">{number}</span>
++                <span className="text-accent-strong">{number}</span>
+ 
+                 <h3 className="mt-8 text-xl font-bold">
+                   {title}
+                 </h3>
+ 
+-                <p className="mt-4 text-sm leading-6 text-white/40">
++                <p className="mt-4 text-sm leading-6 text-subtle">
+                   {text}
+                 </p>
+               </div>
+@@ -199,7 +199,7 @@ export default function CommercialConstructionPage() {
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHY GLOARO
+             </p>
+ 
+@@ -220,9 +220,9 @@ export default function CommercialConstructionPage() {
+             ].map((item) => (
+               <div
+                 key={item}
+-                className="flex items-center gap-4 border-b border-white/10 pb-6"
++                className="flex items-center gap-4 border-b border-line pb-6"
+               >
+-                <div className="flex h-8 w-8 items-center justify-center bg-[#d6ff3f] text-black">
++                <div className="flex h-8 w-8 items-center justify-center bg-accent text-primary">
+                   <Check size={17} />
+                 </div>
+ 
+@@ -237,7 +237,7 @@ export default function CommercialConstructionPage() {
+       </section>
+ 
+       {/* CTA */}
+-      <section className="border-t border-white/10 bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="border-t border-line bg-accent px-6 py-20 text-primary lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+           <p className="text-sm font-bold tracking-[0.25em]">
+diff --git a/app/services/interior-works/page.tsx b/app/services/interior-works/page.tsx
+index 52332a3..acb4f39 100644
+--- a/app/services/interior-works/page.tsx
++++ b/app/services/interior-works/page.tsx
+@@ -10,7 +10,7 @@ import {
+ 
+ export default function InteriorWorksPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HERO */}
+       <section className="px-6 pb-20 pt-32 lg:px-10">
+@@ -18,14 +18,14 @@ export default function InteriorWorksPage() {
+ 
+           <Link
+             href="/#services"
+-            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK TO SERVICES
+           </Link>
+ 
+           <div className="mt-16">
+-            <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+               GLOARO CONSTRUCTION
+             </p>
+ 
+@@ -35,7 +35,7 @@ export default function InteriorWorksPage() {
+               WORKS
+             </h1>
+ 
+-            <p className="mt-8 max-w-xl text-lg leading-8 text-white/50">
++            <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
+               We transform interiors into functional and refined spaces through
+               thoughtful planning, quality materials, and precise execution.
+             </p>
+@@ -45,11 +45,11 @@ export default function InteriorWorksPage() {
+       </section>
+ 
+       {/* INTRO */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-20 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-20 lg:px-10">
+         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHAT WE DO
+             </p>
+ 
+@@ -61,12 +61,12 @@ export default function InteriorWorksPage() {
+           </div>
+ 
+           <div>
+-            <p className="text-lg leading-8 text-white/50">
++            <p className="text-lg leading-8 text-muted">
+               We create interiors that combine comfort, functionality, and
+               modern aesthetics while reflecting the personality of each space.
+             </p>
+ 
+-            <p className="mt-6 text-lg leading-8 text-white/50">
++            <p className="mt-6 text-lg leading-8 text-muted">
+               From planning and material selection to final finishing, we
+               coordinate every stage carefully.
+             </p>
+@@ -79,7 +79,7 @@ export default function InteriorWorksPage() {
+       <section className="px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             OUR EXPERTISE
+           </p>
+ 
+@@ -87,7 +87,7 @@ export default function InteriorWorksPage() {
+             WHAT WE PROVIDE
+           </h2>
+ 
+-          <div className="mt-12 grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
++          <div className="mt-12 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -120,21 +120,21 @@ export default function InteriorWorksPage() {
+               return (
+                 <div
+                   key={item.number}
+-                  className="group min-h-[280px] border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
++                  className="group min-h-[280px] border-b border-r border-line p-8 transition duration-300 hover:bg-accent hover:text-primary"
+                 >
+-                  <span className="text-sm font-bold text-[#d6ff3f] group-hover:text-black">
++                  <span className="text-sm font-bold text-accent-strong group-hover:text-primary">
+                     {item.number}
+                   </span>
+ 
+                   <Icon
+                     size={34}
+                     strokeWidth={1.5}
+-                    className="mt-12 text-[#d6ff3f] group-hover:text-black"
++                    className="mt-12 text-accent-strong group-hover:text-primary"
+                   />
+ 
+                   <h3 className="mt-6 text-xl font-bold">{item.title}</h3>
+ 
+-                  <p className="mt-4 text-sm leading-6 text-white/40 group-hover:text-black/60">
++                  <p className="mt-4 text-sm leading-6 text-subtle group-hover:text-primary/70">
+                     {item.text}
+                   </p>
+                 </div>
+@@ -146,10 +146,10 @@ export default function InteriorWorksPage() {
+       </section>
+ 
+       {/* PROCESS */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-24 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             HOW WE WORK
+           </p>
+ 
+@@ -157,7 +157,7 @@ export default function InteriorWorksPage() {
+             OUR PROCESS
+           </h2>
+ 
+-          <div className="mt-14 grid border-l border-t border-white/10 md:grid-cols-4">
++          <div className="mt-14 grid border-l border-t border-line md:grid-cols-4">
+ 
+             {[
+               ["01", "CONSULTATION", "Understanding your needs, style, and space."],
+@@ -165,12 +165,12 @@ export default function InteriorWorksPage() {
+               ["03", "EXECUTION", "Completing interior works with precision and care."],
+               ["04", "FINISHING", "Final detailing and preparation of the completed space."],
+             ].map(([number, title, text]) => (
+-              <div key={number} className="border-b border-r border-white/10 p-8">
+-                <span className="text-[#d6ff3f]">{number}</span>
++              <div key={number} className="border-b border-r border-line p-8">
++                <span className="text-accent-strong">{number}</span>
+ 
+                 <h3 className="mt-8 text-xl font-bold">{title}</h3>
+ 
+-                <p className="mt-4 text-sm leading-6 text-white/40">
++                <p className="mt-4 text-sm leading-6 text-subtle">
+                   {text}
+                 </p>
+               </div>
+@@ -185,7 +185,7 @@ export default function InteriorWorksPage() {
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHY GLOARO
+             </p>
+ 
+@@ -205,9 +205,9 @@ export default function InteriorWorksPage() {
+             ].map((item) => (
+               <div
+                 key={item}
+-                className="flex items-center gap-4 border-b border-white/10 pb-6"
++                className="flex items-center gap-4 border-b border-line pb-6"
+               >
+-                <div className="flex h-8 w-8 items-center justify-center bg-[#d6ff3f] text-black">
++                <div className="flex h-8 w-8 items-center justify-center bg-accent text-primary">
+                   <Check size={17} />
+                 </div>
+ 
+@@ -220,7 +220,7 @@ export default function InteriorWorksPage() {
+       </section>
+ 
+       {/* CTA */}
+-      <section className="border-t border-white/10 bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="border-t border-line bg-accent px-6 py-20 text-primary lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+           <p className="text-sm font-bold tracking-[0.25em]">
+diff --git a/app/services/project-management/page.tsx b/app/services/project-management/page.tsx
+index 90a00a0..9acc862 100644
+--- a/app/services/project-management/page.tsx
++++ b/app/services/project-management/page.tsx
+@@ -10,7 +10,7 @@ import {
+ 
+ export default function ProjectManagementPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HERO */}
+       <section className="px-6 pb-20 pt-32 lg:px-10">
+@@ -18,14 +18,14 @@ export default function ProjectManagementPage() {
+ 
+           <Link
+             href="/#services"
+-            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK TO SERVICES
+           </Link>
+ 
+           <div className="mt-16">
+-            <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+               GLOARO CONSTRUCTION
+             </p>
+ 
+@@ -35,7 +35,7 @@ export default function ProjectManagementPage() {
+               MANAGEMENT
+             </h1>
+ 
+-            <p className="mt-8 max-w-xl text-lg leading-8 text-white/50">
++            <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
+               We manage construction projects from planning to completion,
+               coordinating timelines, resources, quality, and execution.
+             </p>
+@@ -45,11 +45,11 @@ export default function ProjectManagementPage() {
+       </section>
+ 
+       {/* INTRO */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-20 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-20 lg:px-10">
+         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHAT WE DO
+             </p>
+ 
+@@ -61,12 +61,12 @@ export default function ProjectManagementPage() {
+           </div>
+ 
+           <div>
+-            <p className="text-lg leading-8 text-white/50">
++            <p className="text-lg leading-8 text-muted">
+               Effective project management keeps construction organized,
+               coordinated, and moving toward the final goal.
+             </p>
+ 
+-            <p className="mt-6 text-lg leading-8 text-white/50">
++            <p className="mt-6 text-lg leading-8 text-muted">
+               We coordinate schedules, resources, teams, quality, and
+               communication throughout the project lifecycle.
+             </p>
+@@ -79,7 +79,7 @@ export default function ProjectManagementPage() {
+       <section className="px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             OUR EXPERTISE
+           </p>
+ 
+@@ -87,7 +87,7 @@ export default function ProjectManagementPage() {
+             WHAT WE PROVIDE
+           </h2>
+ 
+-          <div className="mt-12 grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
++          <div className="mt-12 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -120,21 +120,21 @@ export default function ProjectManagementPage() {
+               return (
+                 <div
+                   key={item.number}
+-                  className="group min-h-[280px] border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
++                  className="group min-h-[280px] border-b border-r border-line p-8 transition duration-300 hover:bg-accent hover:text-primary"
+                 >
+-                  <span className="text-sm font-bold text-[#d6ff3f] group-hover:text-black">
++                  <span className="text-sm font-bold text-accent-strong group-hover:text-primary">
+                     {item.number}
+                   </span>
+ 
+                   <Icon
+                     size={34}
+                     strokeWidth={1.5}
+-                    className="mt-12 text-[#d6ff3f] group-hover:text-black"
++                    className="mt-12 text-accent-strong group-hover:text-primary"
+                   />
+ 
+                   <h3 className="mt-6 text-xl font-bold">{item.title}</h3>
+ 
+-                  <p className="mt-4 text-sm leading-6 text-white/40 group-hover:text-black/60">
++                  <p className="mt-4 text-sm leading-6 text-subtle group-hover:text-primary/70">
+                     {item.text}
+                   </p>
+                 </div>
+@@ -146,10 +146,10 @@ export default function ProjectManagementPage() {
+       </section>
+ 
+       {/* PROCESS */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-24 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             HOW WE WORK
+           </p>
+ 
+@@ -157,7 +157,7 @@ export default function ProjectManagementPage() {
+             OUR PROCESS
+           </h2>
+ 
+-          <div className="mt-14 grid border-l border-t border-white/10 md:grid-cols-4">
++          <div className="mt-14 grid border-l border-t border-line md:grid-cols-4">
+ 
+             {[
+               ["01", "PLAN", "Defining project requirements, goals, and priorities."],
+@@ -165,12 +165,12 @@ export default function ProjectManagementPage() {
+               ["03", "EXECUTE", "Monitoring construction activities and project progress."],
+               ["04", "DELIVER", "Completing final checks and bringing the project to completion."],
+             ].map(([number, title, text]) => (
+-              <div key={number} className="border-b border-r border-white/10 p-8">
+-                <span className="text-[#d6ff3f]">{number}</span>
++              <div key={number} className="border-b border-r border-line p-8">
++                <span className="text-accent-strong">{number}</span>
+ 
+                 <h3 className="mt-8 text-xl font-bold">{title}</h3>
+ 
+-                <p className="mt-4 text-sm leading-6 text-white/40">
++                <p className="mt-4 text-sm leading-6 text-subtle">
+                   {text}
+                 </p>
+               </div>
+@@ -185,7 +185,7 @@ export default function ProjectManagementPage() {
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHY GLOARO
+             </p>
+ 
+@@ -205,9 +205,9 @@ export default function ProjectManagementPage() {
+             ].map((item) => (
+               <div
+                 key={item}
+-                className="flex items-center gap-4 border-b border-white/10 pb-6"
++                className="flex items-center gap-4 border-b border-line pb-6"
+               >
+-                <div className="flex h-8 w-8 items-center justify-center bg-[#d6ff3f] text-black">
++                <div className="flex h-8 w-8 items-center justify-center bg-accent text-primary">
+                   <Check size={17} />
+                 </div>
+ 
+@@ -220,7 +220,7 @@ export default function ProjectManagementPage() {
+       </section>
+ 
+       {/* CTA */}
+-      <section className="border-t border-white/10 bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="border-t border-line bg-accent px-6 py-20 text-primary lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+           <p className="text-sm font-bold tracking-[0.25em]">
+diff --git a/app/services/renovation/page.tsx b/app/services/renovation/page.tsx
+index 9e397a4..1f9a6f0 100644
+--- a/app/services/renovation/page.tsx
++++ b/app/services/renovation/page.tsx
+@@ -10,7 +10,7 @@ import {
+ 
+ export default function RenovationPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HERO */}
+       <section className="px-6 pb-20 pt-32 lg:px-10">
+@@ -18,14 +18,14 @@ export default function RenovationPage() {
+ 
+           <Link
+             href="/#services"
+-            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK TO SERVICES
+           </Link>
+ 
+           <div className="mt-16">
+-            <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6ff3f]">
++            <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+               GLOARO CONSTRUCTION
+             </p>
+ 
+@@ -33,7 +33,7 @@ export default function RenovationPage() {
+               RENOVATION
+             </h1>
+ 
+-            <p className="mt-8 max-w-xl text-lg leading-8 text-white/50">
++            <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
+               We renew and transform existing spaces with modern solutions,
+               careful planning, and quality workmanship.
+             </p>
+@@ -43,11 +43,11 @@ export default function RenovationPage() {
+       </section>
+ 
+       {/* INTRO */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-20 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-20 lg:px-10">
+         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHAT WE DO
+             </p>
+ 
+@@ -59,12 +59,12 @@ export default function RenovationPage() {
+           </div>
+ 
+           <div>
+-            <p className="text-lg leading-8 text-white/50">
++            <p className="text-lg leading-8 text-muted">
+               We renovate existing spaces to improve their functionality,
+               appearance, comfort, and long-term value.
+             </p>
+ 
+-            <p className="mt-6 text-lg leading-8 text-white/50">
++            <p className="mt-6 text-lg leading-8 text-muted">
+               From individual improvements to complete renovations, we manage
+               the work from planning through completion.
+             </p>
+@@ -77,7 +77,7 @@ export default function RenovationPage() {
+       <section className="px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             OUR EXPERTISE
+           </p>
+ 
+@@ -85,7 +85,7 @@ export default function RenovationPage() {
+             WHAT WE PROVIDE
+           </h2>
+ 
+-          <div className="mt-12 grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
++          <div className="mt-12 grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -118,21 +118,21 @@ export default function RenovationPage() {
+               return (
+                 <div
+                   key={item.number}
+-                  className="group min-h-[280px] border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
++                  className="group min-h-[280px] border-b border-r border-line p-8 transition duration-300 hover:bg-accent hover:text-primary"
+                 >
+-                  <span className="text-sm font-bold text-[#d6ff3f] group-hover:text-black">
++                  <span className="text-sm font-bold text-accent-strong group-hover:text-primary">
+                     {item.number}
+                   </span>
+ 
+                   <Icon
+                     size={34}
+                     strokeWidth={1.5}
+-                    className="mt-12 text-[#d6ff3f] group-hover:text-black"
++                    className="mt-12 text-accent-strong group-hover:text-primary"
+                   />
+ 
+                   <h3 className="mt-6 text-xl font-bold">{item.title}</h3>
+ 
+-                  <p className="mt-4 text-sm leading-6 text-white/40 group-hover:text-black/60">
++                  <p className="mt-4 text-sm leading-6 text-subtle group-hover:text-primary/70">
+                     {item.text}
+                   </p>
+                 </div>
+@@ -144,10 +144,10 @@ export default function RenovationPage() {
+       </section>
+ 
+       {/* PROCESS */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-24 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             HOW WE WORK
+           </p>
+ 
+@@ -155,7 +155,7 @@ export default function RenovationPage() {
+             OUR PROCESS
+           </h2>
+ 
+-          <div className="mt-14 grid border-l border-t border-white/10 md:grid-cols-4">
++          <div className="mt-14 grid border-l border-t border-line md:grid-cols-4">
+ 
+             {[
+               ["01", "ASSESSMENT", "Understanding the existing space and renovation requirements."],
+@@ -163,12 +163,12 @@ export default function RenovationPage() {
+               ["03", "RENOVATION", "Executing the planned improvements with care and precision."],
+               ["04", "COMPLETION", "Final checks and delivery of the renewed space."],
+             ].map(([number, title, text]) => (
+-              <div key={number} className="border-b border-r border-white/10 p-8">
+-                <span className="text-[#d6ff3f]">{number}</span>
++              <div key={number} className="border-b border-r border-line p-8">
++                <span className="text-accent-strong">{number}</span>
+ 
+                 <h3 className="mt-8 text-xl font-bold">{title}</h3>
+ 
+-                <p className="mt-4 text-sm leading-6 text-white/40">
++                <p className="mt-4 text-sm leading-6 text-subtle">
+                   {text}
+                 </p>
+               </div>
+@@ -183,7 +183,7 @@ export default function RenovationPage() {
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHY GLOARO
+             </p>
+ 
+@@ -203,9 +203,9 @@ export default function RenovationPage() {
+             ].map((item) => (
+               <div
+                 key={item}
+-                className="flex items-center gap-4 border-b border-white/10 pb-6"
++                className="flex items-center gap-4 border-b border-line pb-6"
+               >
+-                <div className="flex h-8 w-8 items-center justify-center bg-[#d6ff3f] text-black">
++                <div className="flex h-8 w-8 items-center justify-center bg-accent text-primary">
+                   <Check size={17} />
+                 </div>
+ 
+@@ -218,7 +218,7 @@ export default function RenovationPage() {
+       </section>
+ 
+       {/* CTA */}
+-      <section className="border-t border-white/10 bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="border-t border-line bg-accent px-6 py-20 text-primary lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+           <p className="text-sm font-bold tracking-[0.25em]">
+diff --git a/app/services/residential-construction/page.tsx b/app/services/residential-construction/page.tsx
+index ccd7be0..b6b588a 100644
+--- a/app/services/residential-construction/page.tsx
++++ b/app/services/residential-construction/page.tsx
+@@ -11,7 +11,7 @@ import {
+ 
+ export default function ResidentialConstructionPage() {
+   return (
+-    <main className="min-h-screen bg-[#080808] text-white">
++    <main className="min-h-screen bg-page text-ink">
+ 
+       {/* HERO */}
+       <section className="px-6 pb-20 pt-32 lg:px-10">
+@@ -19,7 +19,7 @@ export default function ResidentialConstructionPage() {
+ 
+           <Link
+             href="/#services"
+-            className="inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-[#d6ff3f]"
++            className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent-strong"
+           >
+             <ArrowLeft size={16} />
+             BACK TO SERVICES
+@@ -28,7 +28,7 @@ export default function ResidentialConstructionPage() {
+           <div className="mt-16 grid items-end gap-12 lg:grid-cols-2">
+ 
+             <div>
+-              <p className="text-xs font-bold uppercase tracking-[0.35em] text-[#d6ff3f]">
++              <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-strong">
+                 GLOARO CONSTRUCTION
+               </p>
+ 
+@@ -38,7 +38,7 @@ export default function ResidentialConstructionPage() {
+                 CONSTRUCTION
+               </h1>
+ 
+-              <p className="mt-8 max-w-xl text-lg leading-8 text-white/50">
++              <p className="mt-8 max-w-xl text-lg leading-8 text-muted">
+                 We build high-quality homes with careful planning, modern
+                 construction techniques, and attention to every detail.
+               </p>
+@@ -51,11 +51,11 @@ export default function ResidentialConstructionPage() {
+       </section>
+ 
+       {/* INTRO */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-20 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-20 lg:px-10">
+         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHAT WE DO
+             </p>
+ 
+@@ -67,13 +67,13 @@ export default function ResidentialConstructionPage() {
+           </div>
+ 
+           <div>
+-            <p className="text-lg leading-8 text-white/50">
++            <p className="text-lg leading-8 text-muted">
+               From the initial concept to the final handover, our residential
+               construction service focuses on creating spaces that are
+               practical, durable, and designed around the people who use them.
+             </p>
+ 
+-            <p className="mt-6 text-lg leading-8 text-white/50">
++            <p className="mt-6 text-lg leading-8 text-muted">
+               We coordinate every stage of construction to maintain quality,
+               precision, and a smooth building experience.
+             </p>
+@@ -87,7 +87,7 @@ export default function ResidentialConstructionPage() {
+         <div className="mx-auto max-w-7xl">
+ 
+           <div className="mb-12">
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               OUR EXPERTISE
+             </p>
+ 
+@@ -96,7 +96,7 @@ export default function ResidentialConstructionPage() {
+             </h2>
+           </div>
+ 
+-          <div className="grid border-l border-t border-white/10 sm:grid-cols-2 lg:grid-cols-4">
++          <div className="grid border-l border-t border-line sm:grid-cols-2 lg:grid-cols-4">
+ 
+             {[
+               {
+@@ -129,23 +129,23 @@ export default function ResidentialConstructionPage() {
+               return (
+                 <div
+                   key={item.number}
+-                  className="min-h-[280px] border-b border-r border-white/10 p-8 transition duration-300 hover:bg-[#d6ff3f] hover:text-black"
++                  className="min-h-[280px] border-b border-r border-line p-8 transition duration-300 hover:bg-accent hover:text-primary"
+                 >
+-                  <span className="text-sm font-bold text-[#d6ff3f] transition hover:text-black">
++                  <span className="text-sm font-bold text-accent-strong transition hover:text-primary">
+                     {item.number}
+                   </span>
+ 
+                   <Icon
+                     size={34}
+                     strokeWidth={1.5}
+-                    className="mt-12 text-[#d6ff3f]"
++                    className="mt-12 text-accent-strong"
+                   />
+ 
+                   <h3 className="mt-6 text-xl font-bold">
+                     {item.title}
+                   </h3>
+ 
+-                  <p className="mt-4 text-sm leading-6 text-white/40 transition group-hover:text-black/60">
++                  <p className="mt-4 text-sm leading-6 text-subtle transition group-hover:text-primary/70">
+                     {item.text}
+                   </p>
+                 </div>
+@@ -157,10 +157,10 @@ export default function ResidentialConstructionPage() {
+       </section>
+ 
+       {/* PROCESS */}
+-      <section className="border-y border-white/10 bg-[#0d0d0d] px-6 py-24 lg:px-10">
++      <section className="border-y border-line bg-section px-6 py-24 lg:px-10">
+         <div className="mx-auto max-w-7xl">
+ 
+-          <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++          <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+             HOW WE WORK
+           </p>
+ 
+@@ -168,7 +168,7 @@ export default function ResidentialConstructionPage() {
+             OUR PROCESS
+           </h2>
+ 
+-          <div className="mt-14 grid border-l border-t border-white/10 md:grid-cols-4">
++          <div className="mt-14 grid border-l border-t border-line md:grid-cols-4">
+ 
+             {[
+               ["01", "CONSULTATION", "Understanding your requirements, budget, and vision."],
+@@ -178,15 +178,15 @@ export default function ResidentialConstructionPage() {
+             ].map(([number, title, text]) => (
+               <div
+                 key={number}
+-                className="border-b border-r border-white/10 p-8"
++                className="border-b border-r border-line p-8"
+               >
+-                <span className="text-[#d6ff3f]">{number}</span>
++                <span className="text-accent-strong">{number}</span>
+ 
+                 <h3 className="mt-8 text-xl font-bold">
+                   {title}
+                 </h3>
+ 
+-                <p className="mt-4 text-sm leading-6 text-white/40">
++                <p className="mt-4 text-sm leading-6 text-subtle">
+                   {text}
+                 </p>
+               </div>
+@@ -201,7 +201,7 @@ export default function ResidentialConstructionPage() {
+         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
+ 
+           <div>
+-            <p className="text-sm font-bold tracking-[0.25em] text-[#d6ff3f]">
++            <p className="text-sm font-bold tracking-[0.25em] text-accent-strong">
+               WHY GLOARO
+             </p>
+ 
+@@ -222,9 +222,9 @@ export default function ResidentialConstructionPage() {
+             ].map((item) => (
+               <div
+                 key={item}
+-                className="flex items-center gap-4 border-b border-white/10 pb-6"
++                className="flex items-center gap-4 border-b border-line pb-6"
+               >
+-                <div className="flex h-8 w-8 items-center justify-center bg-[#d6ff3f] text-black">
++                <div className="flex h-8 w-8 items-center justify-center bg-accent text-primary">
+                   <Check size={17} />
+                 </div>
+ 
+@@ -239,7 +239,7 @@ export default function ResidentialConstructionPage() {
+       </section>
+ 
+       {/* CTA */}
+-      <section className="border-t border-white/10 bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
++      <section className="border-t border-line bg-accent px-6 py-20 text-primary lg:px-10">
+         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+ 
+           <div>

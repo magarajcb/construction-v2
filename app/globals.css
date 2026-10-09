@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
+/*
+  Arun Construction light theme
+  Single source of truth for the site palette. Components use the semantic
+  utilities below (bg-page, text-ink, border-line, bg-accent, ...) instead of
+  hardcoded hex values, so every section stays consistent.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Surfaces */
+  --page: #fafaf7; /* main page background */
+  --section: #f1f4f8; /* alternating section bands */
+  --card: #ffffff; /* cards, inputs, panels */
+
+  /* Text */
+  --ink: #0f172a; /* headings, strong text */
+  --body: #334155; /* body copy */
+  --muted: #475569; /* secondary copy */
+  --subtle: #64748b; /* captions, labels */
+  --faint: #94a3b8; /* decorative / de-emphasised headings */
+
+  /* Lines */
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+
+  /* Brand */
+  --primary: #0b2545; /* deep navy: buttons, footer, logo */
+  --accent: #f97316; /* safety orange: fills, CTAs */
+  --accent-strong: #c2410c; /* orange for text/links on light backgrounds */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-page: var(--page);
+  --color-section: var(--section);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--primary);
 }

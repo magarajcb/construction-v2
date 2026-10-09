@@ -59,23 +59,23 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#080808] text-white">
+    <main className="min-h-screen bg-page text-ink">
 
       {/* NAVBAR */}
-      <nav className="border-b border-white/10 bg-black">
+      <nav className="border-b border-line bg-white">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-10">
 
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
+            <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
               <Building2 size={21} />
             </div>
 
             <div>
               <div className="text-lg font-bold tracking-[0.2em]">
-                GLO<span className="text-[#d6ff3f]">ARO</span>
+                AR<span className="text-accent-strong">UN</span>
               </div>
 
-              <div className="text-[9px] tracking-[0.35em] text-white/40">
+              <div className="text-[9px] tracking-[0.35em] text-subtle">
                 CONSTRUCTION
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm font-bold text-white/60 transition hover:text-[#d6ff3f]"
+            className="flex items-center gap-2 text-sm font-bold text-muted transition hover:text-accent-strong"
           >
             <ArrowLeft size={16} />
             BACK HOME
@@ -93,20 +93,20 @@ export default function ContactPage() {
       </nav>
 
       {/* HERO */}
-      <section className="border-b border-white/10 py-24">
+      <section className="border-b border-line py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
             Start a Conversation
           </p>
 
           <h1 className="mt-5 max-w-4xl text-6xl font-black tracking-tight sm:text-8xl">
             LET&apos;S BUILD
             <br />
-            <span className="text-white/30">SOMETHING GREAT.</span>
+            <span className="text-faint">SOMETHING GREAT.</span>
           </h1>
 
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/50">
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-muted">
             Tell us about your project, your vision, and what you want to
             build. Our team will get back to you.
           </p>
@@ -120,7 +120,7 @@ export default function ContactPage() {
 
           {/* FORM */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
               Project Inquiry
             </p>
 
@@ -135,7 +135,7 @@ export default function ContactPage() {
 
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
                     Name
                   </label>
 
@@ -143,12 +143,12 @@ export default function ContactPage() {
   name="name"
   type="text"
   placeholder="Your name"
-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
+                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
                     Email
                   </label>
 
@@ -156,14 +156,14 @@ export default function ContactPage() {
   name="email"
   type="email"
   placeholder="you@example.com"
-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
+                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
                   />
                 </div>
               </div>
 
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
                     Phone
                   </label>
 
@@ -171,19 +171,19 @@ export default function ContactPage() {
   name="phone"
   type="tel"
   placeholder="+91"
-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
+                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
+                  <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
                     Project Type
                   </label>
 
                  <select
   name="projectType"
   defaultValue=""
-                    className="w-full border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition focus:border-[#d6ff3f]"
+                    className="w-full border border-line bg-card px-5 py-4 text-ink outline-none transition focus:border-accent"
                   >
                     <option value="" disabled>
                       Select project type
@@ -199,7 +199,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-white/50">
+                <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-muted">
                   Project Details
                 </label>
 
@@ -207,14 +207,14 @@ export default function ContactPage() {
   name="details"
   rows={7}
                   placeholder="Tell us about your project..."
-                  className="w-full resize-none border border-white/10 bg-[#111] px-5 py-4 text-white outline-none transition placeholder:text-white/20 focus:border-[#d6ff3f]"
+                  className="w-full resize-none border border-line bg-card px-5 py-4 text-ink outline-none transition placeholder:text-faint focus:border-accent"
                 />
               </div>
 
               <button
   type="submit"
   disabled={loading}
-  className="group flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
+  className="group flex items-center gap-3 bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
 >
   {loading ? "SENDING..." : "SEND INQUIRY"}
 
@@ -224,7 +224,7 @@ export default function ContactPage() {
   />
 </button>
 {message && (
-  <p className="text-sm font-medium text-[#d6ff3f]">
+  <p className="text-sm font-medium text-accent-strong">
     {message}
   </p>
 )}  
@@ -233,17 +233,17 @@ export default function ContactPage() {
           </div>
 
           {/* CONTACT INFO */}
-          <div className="border-l border-white/10 pl-8 lg:pl-12">
+          <div className="border-l border-line pl-8 lg:pl-12">
 
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
               Contact
             </p>
 
             <h2 className="mt-4 text-3xl font-black">
-              GLOARO CONSTRUCTION
+              ARUN CONSTRUCTION
             </h2>
 
-            <p className="mt-5 leading-7 text-white/50">
+            <p className="mt-5 leading-7 text-muted">
               Have a question or planning a new project? Reach out directly.
               We&apos;d be happy to hear from you.
             </p>
@@ -251,51 +251,57 @@ export default function ContactPage() {
             <div className="mt-12 space-y-8">
 
               <div className="flex gap-4">
-                <MapPin className="mt-1 shrink-0 text-[#d6ff3f]" size={20} />
+                <MapPin className="mt-1 shrink-0 text-accent-strong" size={20} />
 
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40">
+                  <p className="text-xs font-bold uppercase tracking-widest text-subtle">
                     Visit Us
                   </p>
 
-                  <p className="mt-2 text-sm leading-6 text-white/70">
-                    SF No.101/2B, Esai Towers,
+                  <p className="mt-2 text-sm leading-6 text-body">
+                    No. 52, Alagiri Samy Salai,
                     <br />
-                    Salem Main Road,
-                    <br />
-                    Near Bypass, Emmaper,
-                    <br />
-                    Kallakurichi – 606202,
-                    <br />
-                    Tamil Nadu, India.
+                    KK Nagar, Chennai – 600 078.
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <Phone className="shrink-0 text-[#d6ff3f]" size={20} />
+                <Phone className="shrink-0 text-accent-strong" size={20} />
 
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40">
+                  <p className="text-xs font-bold uppercase tracking-widest text-subtle">
                     Phone
                   </p>
 
-                  <p className="mt-2 text-sm text-white/70">
-                    +91 72000 73704
+                  <p className="mt-2 text-sm leading-6 text-body">
+                    044 - 423 44333
+                    <br />
+                    +91 99403 07575
                   </p>
                 </div>
               </div>
 
               <div className="flex gap-4">
-                <Mail className="shrink-0 text-[#d6ff3f]" size={20} />
+                <Mail className="shrink-0 text-accent-strong" size={20} />
 
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-white/40">
+                  <p className="text-xs font-bold uppercase tracking-widest text-subtle">
                     Email
                   </p>
 
-                  <p className="mt-2 text-sm text-white/70">
-                    info@gloaro.com
+                  <p className="mt-2 text-sm leading-6 text-body">
+                    arunconstructionno1@gmail.com
+                    <br />
+                    arunbuildersindia@gmail.com
+                    <br />
+                    sales@arunbuilders.in
+                    <br />
+                    marketing@arunbuilders.in
+                    <br />
+                    arun@arunbuilders.in
+                    <br />
+                    admin@arunbuilders.in
                   </p>
                 </div>
               </div>
@@ -308,7 +314,7 @@ export default function ContactPage() {
       </section>
 
       {/* BOTTOM CTA */}
-      <section className="bg-[#d6ff3f] py-20 text-black">
+      <section className="bg-accent py-20 text-primary">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
 
           <p className="text-xs font-bold uppercase tracking-[0.3em]">
@@ -325,7 +331,7 @@ export default function ContactPage() {
 
             <Link
               href="/"
-              className="flex w-fit items-center gap-3 bg-black px-6 py-4 font-bold text-white transition hover:bg-white hover:text-black"
+              className="flex w-fit items-center gap-3 bg-primary px-6 py-4 font-bold text-white transition hover:bg-white hover:text-primary"
             >
               BACK HOME
               <ArrowRight size={18} />

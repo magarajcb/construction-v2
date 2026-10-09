@@ -1,0 +1,478 @@
+diff --git a/app/admin/AdminPanel.tsx b/app/admin/AdminPanel.tsx
+index ea3501c..fc2d0eb 100644
+--- a/app/admin/AdminPanel.tsx
++++ b/app/admin/AdminPanel.tsx
+@@ -7,22 +7,102 @@ import {
+   Image as ImageIcon,
+   LogOut,
+   Trash2,
++  UploadCloud,
++  X,
+ } from "lucide-react";
+ 
++const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
++const MAX_IMAGE_SIDE = 1920;
++
++type ProjectForm = {
++  title: string;
++  slug: string;
++  client: string;
++  location: string;
++  category: string;
++  year: string;
++  status: string;
++  description: string;
++  coverImage: string;
++  images: string[];
++};
++
++const emptyForm: ProjectForm = {
++  title: "",
++  slug: "",
++  client: "",
++  location: "",
++  category: "",
++  year: "",
++  status: "Completed",
++  description: "",
++  coverImage: "",
++  images: [],
++};
++
++// Shrink big phone/camera photos before uploading so they stay well under the size limit.
++async function prepareImage(file: File): Promise<File> {
++  if (file.type === "image/gif") return file;
++
++  try {
++    const bitmap = await createImageBitmap(file);
++    const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(bitmap.width, bitmap.height));
++
++    if (scale === 1 && file.size <= 1.5 * 1024 * 1024) {
++      bitmap.close();
++      return file;
++    }
++
++    const canvas = document.createElement("canvas");
++    canvas.width = Math.round(bitmap.width * scale);
++    canvas.height = Math.round(bitmap.height * scale);
++
++    const ctx = canvas.getContext("2d");
++    if (!ctx) return file;
++
++    ctx.fillStyle = "#ffffff";
++    ctx.fillRect(0, 0, canvas.width, canvas.height);
++    ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
++    bitmap.close();
++
++    const blob = await new Promise<Blob | null>((resolve) =>
++      canvas.toBlob(resolve, "image/jpeg", 0.85),
++    );
++
++    if (!blob || blob.size >= file.size) return file;
++
++    return new File([blob], file.name.replace(/\.[^.]+$/, "") + ".jpg", {
++      type: "image/jpeg",
++    });
++  } catch {
++    return file;
++  }
++}
++
++async function uploadImage(original: File): Promise<string> {
++  const file = await prepareImage(original);
++
++  if (file.size > MAX_UPLOAD_BYTES) {
++    throw new Error(`${original.name} is too large (maximum 4 MB)`);
++  }
++
++  const body = new FormData();
++  body.append("file", file);
++
++  const response = await fetch("/api/uploads", { method: "POST", body });
++  const data = await response.json().catch(() => ({}));
++
++  if (!response.ok) {
++    throw new Error(data.message || `Failed to upload ${original.name}`);
++  }
++
++  return data.url as string;
++}
++
+ 
+ export default function AdminPage() {
+-  const [form, setForm] = useState({
+-    title: "",
+-    slug: "",
+-    client: "",
+-    location: "",
+-    category: "",
+-    year: "",
+-    status: "Completed",
+-    description: "",
+-    coverImage: "",
+-    images: "",
+-  });
++  const [form, setForm] = useState<ProjectForm>(emptyForm);
++  const [uploading, setUploading] = useState(false);
+ 
+   const [message, setMessage] = useState("");
+   const [loading, setLoading] = useState(false);
+@@ -126,6 +206,47 @@ async function deleteProject(id: string) {
+       slug: createSlug(title),
+     });
+   }
++  async function handleCoverUpload(e: React.ChangeEvent<HTMLInputElement>) {
++    const file = e.target.files?.[0];
++    e.target.value = "";
++    if (!file) return;
++
++    setUploading(true);
++    setMessage("");
++
++    try {
++      const url = await uploadImage(file);
++      setForm((current) => ({ ...current, coverImage: url }));
++    } catch (error) {
++      setMessage(error instanceof Error ? error.message : "Upload failed");
++    } finally {
++      setUploading(false);
++    }
++  }
++
++  async function handleGalleryUpload(e: React.ChangeEvent<HTMLInputElement>) {
++    const files = Array.from(e.target.files ?? []);
++    e.target.value = "";
++    if (files.length === 0) return;
++
++    setUploading(true);
++    setMessage("");
++
++    const failures: string[] = [];
++
++    for (const file of files) {
++      try {
++        const url = await uploadImage(file);
++        setForm((current) => ({ ...current, images: [...current.images, url] }));
++      } catch (error) {
++        failures.push(error instanceof Error ? error.message : `Failed to upload ${file.name}`);
++      }
++    }
++
++    if (failures.length > 0) setMessage(failures.join(". "));
++    setUploading(false);
++  }
++
+   async function handleLogout() {
+   await fetch("/api/admin/logout", {
+     method: "POST",
+@@ -146,13 +267,7 @@ async function deleteProject(id: string) {
+         headers: {
+           "Content-Type": "application/json",
+         },
+-        body: JSON.stringify({
+-          ...form,
+-          images: form.images
+-            .split(",")
+-            .map((image) => image.trim())
+-            .filter(Boolean),
+-        }),
++        body: JSON.stringify(form),
+       });
+ 
+       const data = await response.json();
+@@ -163,18 +278,7 @@ async function deleteProject(id: string) {
+ 
+       setMessage("Project added successfully!");
+ 
+-      setForm({
+-        title: "",
+-        slug: "",
+-        client: "",
+-        location: "",
+-        category: "",
+-        year: "",
+-        status: "Completed",
+-        description: "",
+-        coverImage: "",
+-        images: "",
+-      });
++      setForm(emptyForm);
+     } catch (error) {
+       setMessage(
+         error instanceof Error
+@@ -449,16 +553,40 @@ async function deleteProject(id: string) {
+                 Cover Image
+               </label>
+ 
+-              <input
+-                name="coverImage"
+-                value={form.coverImage}
+-                onChange={handleChange}
+-                placeholder="/images/projects/residence-1.jpg"
+-                className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+-              />
++              {form.coverImage ? (
++                <div className="relative w-fit">
++                  <img
++                    src={form.coverImage}
++                    alt="Cover preview"
++                    className="h-40 w-64 border border-line object-cover"
++                  />
++
++                  <button
++                    type="button"
++                    onClick={() => setForm({ ...form, coverImage: "" })}
++                    aria-label="Remove cover image"
++                    className="absolute -right-3 -top-3 flex h-7 w-7 items-center justify-center bg-primary text-white transition hover:bg-accent hover:text-primary"
++                  >
++                    <X size={15} />
++                  </button>
++                </div>
++              ) : (
++                <label className="flex cursor-pointer flex-col items-center justify-center gap-2 border border-dashed border-line-strong bg-white px-4 py-8 text-center text-sm text-muted transition hover:border-accent">
++                  <UploadCloud size={26} className="text-accent-strong" />
++                  <span>{uploading ? "Uploading..." : "Click to choose a cover image"}</span>
++
++                  <input
++                    type="file"
++                    accept="image/jpeg,image/png,image/webp,image/gif"
++                    onChange={handleCoverUpload}
++                    disabled={uploading}
++                    className="hidden"
++                  />
++                </label>
++              )}
+ 
+               <p className="mt-2 text-xs text-faint">
+-                For now use an image path from public/images.
++                JPG, PNG, WebP or GIF. Large photos are resized automatically.
+               </p>
+             </div>
+ 
+@@ -468,16 +596,50 @@ async function deleteProject(id: string) {
+                 Gallery Images
+               </label>
+ 
+-              <input
+-                name="images"
+-                value={form.images}
+-                onChange={handleChange}
+-                placeholder="/images/projects/img1.jpg, /images/projects/img2.jpg"
+-                className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+-              />
++              {form.images.length > 0 && (
++                <div className="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
++                  {form.images.map((image, index) => (
++                    <div key={image} className="relative">
++                      <img
++                        src={image}
++                        alt={`Gallery image ${index + 1}`}
++                        className="h-28 w-full border border-line object-cover"
++                      />
++
++                      <button
++                        type="button"
++                        onClick={() =>
++                          setForm({
++                            ...form,
++                            images: form.images.filter((_, i) => i !== index),
++                          })
++                        }
++                        aria-label={`Remove gallery image ${index + 1}`}
++                        className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center bg-primary text-white transition hover:bg-accent hover:text-primary"
++                      >
++                        <X size={14} />
++                      </button>
++                    </div>
++                  ))}
++                </div>
++              )}
++
++              <label className="flex cursor-pointer flex-col items-center justify-center gap-2 border border-dashed border-line-strong bg-white px-4 py-8 text-center text-sm text-muted transition hover:border-accent">
++                <UploadCloud size={26} className="text-accent-strong" />
++                <span>{uploading ? "Uploading..." : "Click to add gallery images"}</span>
++
++                <input
++                  type="file"
++                  accept="image/jpeg,image/png,image/webp,image/gif"
++                  multiple
++                  onChange={handleGalleryUpload}
++                  disabled={uploading}
++                  className="hidden"
++                />
++              </label>
+ 
+               <p className="mt-2 text-xs text-faint">
+-                Separate multiple image paths with commas.
++                You can select several images at once.
+               </p>
+             </div>
+ 
+@@ -491,7 +653,7 @@ async function deleteProject(id: string) {
+             {/* SUBMIT */}
+             <button
+               type="submit"
+-              disabled={loading}
++              disabled={loading || uploading}
+               className="flex items-center gap-3 bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+             >
+               <Plus size={18} />
+diff --git a/app/api/uploads/[id]/route.ts b/app/api/uploads/[id]/route.ts
+new file mode 100644
+index 0000000..a6fee82
+--- /dev/null
++++ b/app/api/uploads/[id]/route.ts
+@@ -0,0 +1,37 @@
++import { NextRequest, NextResponse } from "next/server";
++import mongoose from "mongoose";
++import { connectDB } from "@/lib/mongodb";
++import Upload from "@/models/Upload";
++
++// Public: serve an uploaded image.
++export async function GET(_req: NextRequest, ctx: RouteContext<"/api/uploads/[id]">) {
++  try {
++    const { id } = await ctx.params;
++
++    if (!mongoose.isValidObjectId(id)) {
++      return NextResponse.json({ message: "Image not found" }, { status: 404 });
++    }
++
++    await connectDB();
++
++    const upload = await Upload.findById(id).select("data contentType");
++
++    if (!upload) {
++      return NextResponse.json({ message: "Image not found" }, { status: 404 });
++    }
++
++    return new NextResponse(new Uint8Array(upload.data), {
++      headers: {
++        "Content-Type": upload.contentType,
++        "Content-Length": String(upload.data.length),
++        // Each upload has its own id and is never modified, so it can be cached forever.
++        "Cache-Control": "public, max-age=31536000, immutable",
++        "X-Content-Type-Options": "nosniff",
++      },
++    });
++  } catch (error) {
++    console.error("GET UPLOAD ERROR:", error);
++
++    return NextResponse.json({ message: "Failed to load image" }, { status: 500 });
++  }
++}
+diff --git a/app/api/uploads/route.ts b/app/api/uploads/route.ts
+new file mode 100644
+index 0000000..6d390cd
+--- /dev/null
++++ b/app/api/uploads/route.ts
+@@ -0,0 +1,76 @@
++import { NextRequest, NextResponse } from "next/server";
++import { connectDB } from "@/lib/mongodb";
++import { verifyAdmin } from "@/lib/auth";
++import Upload from "@/models/Upload";
++
++// Vercel rejects request bodies over ~4.5 MB, so keep a safe margin.
++const MAX_BYTES = 4 * 1024 * 1024;
++
++/** Detect the real image type from the file's first bytes (never trust the browser's label). */
++function sniffImageType(bytes: Uint8Array): string | null {
++  const startsWith = (sig: number[], offset = 0) =>
++    sig.every((byte, i) => bytes[offset + i] === byte);
++
++  if (startsWith([0xff, 0xd8, 0xff])) return "image/jpeg";
++  if (startsWith([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])) return "image/png";
++  if (startsWith([0x47, 0x49, 0x46, 0x38])) return "image/gif";
++  if (startsWith([0x52, 0x49, 0x46, 0x46]) && startsWith([0x57, 0x45, 0x42, 0x50], 8)) {
++    return "image/webp";
++  }
++  return null;
++}
++
++// Admin: upload one image, returns the URL to store on a project.
++export async function POST(request: NextRequest) {
++  try {
++    if (!(await verifyAdmin())) {
++      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
++    }
++
++    const formData = await request.formData();
++    const file = formData.get("file");
++
++    if (!(file instanceof File)) {
++      return NextResponse.json({ message: "No image file received" }, { status: 400 });
++    }
++
++    if (file.size === 0) {
++      return NextResponse.json({ message: "The file is empty" }, { status: 400 });
++    }
++
++    if (file.size > MAX_BYTES) {
++      return NextResponse.json(
++        { message: "Image is too large (maximum 4 MB)" },
++        { status: 413 },
++      );
++    }
++
++    const buffer = Buffer.from(await file.arrayBuffer());
++    const contentType = sniffImageType(buffer);
++
++    if (!contentType) {
++      return NextResponse.json(
++        { message: "Only JPG, PNG, WebP or GIF images are allowed" },
++        { status: 415 },
++      );
++    }
++
++    await connectDB();
++
++    const upload = await Upload.create({
++      filename: file.name.slice(0, 200),
++      contentType,
++      size: buffer.length,
++      data: buffer,
++    });
++
++    return NextResponse.json(
++      { url: `/api/uploads/${upload._id.toString()}` },
++      { status: 201 },
++    );
++  } catch (error) {
++    console.error("UPLOAD IMAGE ERROR:", error);
++
++    return NextResponse.json({ message: "Failed to upload image" }, { status: 500 });
++  }
++}
+diff --git a/models/Upload.ts b/models/Upload.ts
+new file mode 100644
+index 0000000..00c81af
+--- /dev/null
++++ b/models/Upload.ts
+@@ -0,0 +1,28 @@
++import mongoose, { Model, Schema } from "mongoose";
++
++/**
++ * An uploaded image, stored directly in MongoDB so uploads work on hosts with
++ * a read-only filesystem (such as Vercel). Served by /api/uploads/[id].
++ */
++export interface IUpload {
++  filename: string;
++  contentType: string;
++  size: number;
++  data: Buffer;
++  createdAt: Date;
++}
++
++const UploadSchema = new Schema<IUpload>(
++  {
++    filename: { type: String, trim: true },
++    contentType: { type: String, required: true },
++    size: { type: Number, required: true },
++    data: { type: Buffer, required: true },
++  },
++  { timestamps: { createdAt: true, updatedAt: false } },
++);
++
++const Upload: Model<IUpload> =
++  mongoose.models.Upload || mongoose.model<IUpload>("Upload", UploadSchema);
++
++export default Upload;

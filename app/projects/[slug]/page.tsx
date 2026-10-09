@@ -21,20 +21,20 @@ export default async function ProjectDetailsPage({ params }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-[#080808] text-white">
+    <main className="min-h-screen bg-page text-ink">
 
       {/* HEADER */}
-      <section className="border-b border-white/10 px-6 py-16">
+      <section className="border-b border-line px-6 py-16">
         <div className="mx-auto max-w-7xl">
 
           <Link
             href="/#projects"
-            className="mb-8 inline-block text-sm text-white/50 transition hover:text-[#d6ff3f]"
+            className="mb-8 inline-block text-sm text-muted transition hover:text-accent-strong"
           >
             ← Back to Projects
           </Link>
 
-          <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
             {project.category}
           </p>
 
@@ -42,7 +42,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
             {project.title}
           </h1>
 
-          <div className="mt-6 flex flex-wrap gap-6 text-sm text-white/50">
+          <div className="mt-6 flex flex-wrap gap-6 text-sm text-muted">
             <span>{project.location}</span>
 
             {project.year && (
@@ -72,7 +72,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
       <section className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-3">
 
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
             Project Details
           </p>
 
@@ -82,7 +82,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
         </div>
 
         <div className="md:col-span-2">
-          <p className="text-lg leading-8 text-white/60">
+          <p className="text-lg leading-8 text-muted">
             {project.description}
           </p>
         </div>
@@ -94,7 +94,7 @@ export default async function ProjectDetailsPage({ params }: Props) {
         <section className="mx-auto max-w-7xl px-6 py-16">
 
           <div className="mb-10">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
               Our Work
             </p>
 
@@ -124,12 +124,12 @@ export default async function ProjectDetailsPage({ params }: Props) {
       )}
 
       {/* BACK */}
-      <section className="border-t border-white/10 px-6 py-16">
+      <section className="border-t border-line px-6 py-16">
         <div className="mx-auto max-w-7xl">
 
           <Link
             href="/#projects"
-            className="inline-flex bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white"
+            className="inline-flex bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white"
           >
             ← BACK TO PROJECTS
           </Link>

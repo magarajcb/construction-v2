@@ -7,22 +7,22 @@ import {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-[#080808] text-white">
+    <main className="min-h-screen bg-page text-ink">
 
       {/* NAVBAR */}
-      <nav className="border-b border-white/10">
+      <nav className="border-b border-line">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
 
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
-              <span className="text-xl font-black">G</span>
+            <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
+              <span className="text-xl font-black">A</span>
             </div>
 
             <div>
               <p className="text-xl font-black tracking-[0.2em]">
-                GLOARO
+                ARUN
               </p>
-              <p className="text-[9px] tracking-[0.35em] text-white/40">
+              <p className="text-[9px] tracking-[0.35em] text-subtle">
                 CONSTRUCTION
               </p>
             </div>
@@ -30,7 +30,7 @@ export default function AboutPage() {
 
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm font-bold transition hover:text-[#d6ff3f]"
+            className="flex items-center gap-2 text-sm font-bold transition hover:text-accent-strong"
           >
             <ArrowLeft size={16} />
             BACK HOME
@@ -41,22 +41,22 @@ export default function AboutPage() {
 
 
       {/* HERO */}
-      <section className="border-b border-white/10 px-6 py-28 lg:px-10 lg:py-40">
+      <section className="border-b border-line px-6 py-28 lg:px-10 lg:py-40">
 
         <div className="mx-auto max-w-7xl">
 
-          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
             OUR STORY
           </p>
 
           <h1 className="mt-6 max-w-5xl text-6xl font-black leading-[0.9] tracking-tight sm:text-7xl lg:text-9xl">
             MORE THAN
             <br />
-            <span className="text-white/20">CONSTRUCTION.</span>
+            <span className="text-faint">CONSTRUCTION.</span>
           </h1>
 
           <div className="mt-12 max-w-2xl">
-            <p className="text-xl leading-9 text-white/60">
+            <p className="text-xl leading-9 text-muted">
               We create spaces that combine engineering, architecture,
               craftsmanship and human experience.
             </p>
@@ -68,12 +68,12 @@ export default function AboutPage() {
 
 
       {/* OUR STORY */}
-      <section className="border-b border-white/10 px-6 py-28 lg:px-10">
+      <section className="border-b border-line px-6 py-28 lg:px-10">
 
         <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2">
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
               WHO WE ARE
             </p>
 
@@ -84,9 +84,9 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          <div className="space-y-6 text-lg leading-8 text-white/60">
+          <div className="space-y-6 text-lg leading-8 text-muted">
             <p>
-              GLOARO Construction is built around a simple idea:
+              Arun Construction is built around a simple idea:
               great spaces begin with great thinking.
             </p>
 
@@ -109,12 +109,12 @@ export default function AboutPage() {
 
 
       {/* APPROACH */}
-      <section className="border-b border-white/10 bg-[#0d0d0d] px-6 py-28 lg:px-10">
+      <section className="border-b border-line bg-section px-6 py-28 lg:px-10">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="mb-16">
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
               OUR APPROACH
             </p>
 
@@ -126,7 +126,7 @@ export default function AboutPage() {
           </div>
 
 
-          <div className="grid gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px bg-line md:grid-cols-2 lg:grid-cols-4">
 
             {[
               {
@@ -152,9 +152,9 @@ export default function AboutPage() {
             ].map((step) => (
               <div
                 key={step.number}
-                className="bg-[#0d0d0d] p-8"
+                className="bg-section p-8"
               >
-                <p className="text-sm font-bold text-[#d6ff3f]">
+                <p className="text-sm font-bold text-accent-strong">
                   {step.number}
                 </p>
 
@@ -162,7 +162,7 @@ export default function AboutPage() {
                   {step.title}
                 </h3>
 
-                <p className="mt-4 leading-7 text-white/40">
+                <p className="mt-4 leading-7 text-subtle">
                   {step.text}
                 </p>
               </div>
@@ -176,14 +176,14 @@ export default function AboutPage() {
 
 
       {/* VALUES */}
-      <section className="border-b border-white/10 px-6 py-28 lg:px-10">
+      <section className="border-b border-line px-6 py-28 lg:px-10">
 
         <div className="mx-auto max-w-7xl">
 
           <div className="grid gap-16 lg:grid-cols-2">
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
                 WHAT WE BELIEVE
               </p>
 
@@ -205,11 +205,11 @@ export default function AboutPage() {
               ].map((value) => (
                 <div
                   key={value}
-                  className="flex items-center gap-4 border-b border-white/10 pb-5"
+                  className="flex items-center gap-4 border-b border-line pb-5"
                 >
                   <Check
                     size={18}
-                    className="text-[#d6ff3f]"
+                    className="text-accent-strong"
                   />
 
                   <p className="text-lg font-bold">
@@ -234,7 +234,7 @@ export default function AboutPage() {
 
           <p className="max-w-5xl text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-8xl">
             WE DON'T JUST BUILD STRUCTURES.
-            <span className="text-[#d6ff3f]">
+            <span className="text-accent-strong">
               {" "}WE BUILD WHAT COMES NEXT.
             </span>
           </p>
@@ -245,7 +245,7 @@ export default function AboutPage() {
 
 
       {/* CTA */}
-      <section className="bg-[#d6ff3f] px-6 py-20 text-black lg:px-10">
+      <section className="bg-accent px-6 py-20 text-primary lg:px-10">
 
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 md:flex-row md:items-center">
 
@@ -261,7 +261,7 @@ export default function AboutPage() {
 
           <Link
             href="/contact"
-            className="flex items-center gap-3 bg-black px-7 py-5 font-bold text-white transition hover:bg-white hover:text-black"
+            className="flex items-center gap-3 bg-primary px-7 py-5 font-bold text-white transition hover:bg-white hover:text-primary"
           >
             START A PROJECT
             <ArrowRight size={18} />

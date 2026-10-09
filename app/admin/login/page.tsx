@@ -42,20 +42,20 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#080808] px-6 text-white">
-      <div className="w-full max-w-md border border-white/10 bg-[#101010] p-8">
+    <main className="flex min-h-screen items-center justify-center bg-page px-6 text-ink">
+      <div className="w-full max-w-md border border-line bg-card p-8">
 
         <div className="mb-8 flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center bg-[#d6ff3f] text-black">
+          <div className="flex h-12 w-12 items-center justify-center bg-accent text-primary">
             <LockKeyhole size={22} />
           </div>
 
           <div>
             <h1 className="text-2xl font-bold">
-              GLOARO ADMIN
+              ARUN ADMIN
             </h1>
 
-            <p className="text-sm text-white/40">
+            <p className="text-sm text-subtle">
               Authorized access only
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function AdminLoginPage() {
         <form onSubmit={handleLogin} className="space-y-5">
 
           <div>
-            <label className="mb-2 block text-sm text-white/60">
+            <label className="mb-2 block text-sm text-muted">
               Email
             </label>
 
@@ -72,14 +72,14 @@ export default function AdminLoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
-              placeholder="admin@gloaro.com"
+              className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
+              placeholder="admin@arunbuilders.in"
               required
             />
           </div>
 
           <div>
-            <label className="mb-2 block text-sm text-white/60">
+            <label className="mb-2 block text-sm text-muted">
               Password
             </label>
 
@@ -87,14 +87,14 @@ export default function AdminLoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+              className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
               placeholder="••••••••"
               required
             />
           </div>
 
           {error && (
-            <p className="text-sm text-red-400">
+            <p className="text-sm text-red-600">
               {error}
             </p>
           )}
@@ -102,7 +102,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#d6ff3f] px-5 py-3 font-bold text-black transition hover:bg-white disabled:opacity-50"
+            className="w-full bg-accent px-5 py-3 font-bold text-primary transition hover:bg-primary hover:text-white disabled:opacity-50"
           >
             {loading ? "SIGNING IN..." : "SIGN IN"}
           </button>

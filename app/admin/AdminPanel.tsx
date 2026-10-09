@@ -26,6 +26,10 @@ export default function AdminPage() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  
+const [coverUploading, setCoverUploading] = useState(false);
+const [galleryUploading, setGalleryUploading] = useState(false);
+
   const [projects, setProjects] = useState<any[]>([]);
   const [inquiries, setInquiries] = useState<any[]>([]);
   useEffect(() => {
@@ -126,6 +130,83 @@ async function deleteProject(id: string) {
       slug: createSlug(title),
     });
   }
+  
+async function uploadImage(file: File): Promise<string> {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch("/api/uploads", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await response.json();
+
+  if (!response.ok || !data.url) {
+    throw new Error(data.message || "Image upload failed");
+  }
+
+  return data.url;
+}
+
+async function handleCoverUpload(
+  event: React.ChangeEvent<HTMLInputElement>,
+) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  setCoverUploading(true);
+  setMessage("");
+
+  try {
+    const url = await uploadImage(file);
+    setForm((current) => ({ ...current, coverImage: url }));
+    setMessage("Cover image uploaded successfully!");
+  } catch (error) {
+    setMessage(
+      error instanceof Error ? error.message : "Cover image upload failed",
+    );
+  } finally {
+    setCoverUploading(false);
+    event.target.value = "";
+  }
+}
+
+async function handleGalleryUpload(
+  event: React.ChangeEvent<HTMLInputElement>,
+) {
+  const files = Array.from(event.target.files ?? []);
+  if (!files.length) return;
+
+  setGalleryUploading(true);
+  setMessage("");
+
+  try {
+    const urls: string[] = [];
+
+    for (const file of files) {
+      urls.push(await uploadImage(file));
+    }
+
+    setForm((current) => ({
+      ...current,
+      images: [
+        ...current.images.split(",").map((url) => url.trim()).filter(Boolean),
+        ...urls,
+      ].join(", "),
+    }));
+
+    setMessage(`${urls.length} gallery image(s) uploaded successfully!`);
+  } catch (error) {
+    setMessage(
+      error instanceof Error ? error.message : "Gallery upload failed",
+    );
+  } finally {
+    setGalleryUploading(false);
+    event.target.value = "";
+  }
+}
+
   async function handleLogout() {
   await fetch("/api/admin/logout", {
     method: "POST",
@@ -187,7 +268,7 @@ async function deleteProject(id: string) {
   }
 
   return (
-    <main className="min-h-screen bg-[#080808] px-6 py-12 text-white">
+    <main className="min-h-screen bg-page px-6 py-12 text-ink">
 
       <div className="mx-auto max-w-5xl">
 
@@ -195,15 +276,15 @@ async function deleteProject(id: string) {
         <div className="mb-12 flex items-center justify-between">
 
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
-              GLOARO CONSTRUCTION
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
+              ARUN CONSTRUCTION
             </p>
 
             <h1 className="mt-3 text-4xl font-black">
               ADMIN DASHBOARD
             </h1>
 
-            <p className="mt-2 text-white/50">
+            <p className="mt-2 text-muted">
               Add and manage construction projects.
             </p>
           </div>
@@ -211,7 +292,7 @@ async function deleteProject(id: string) {
          <div className="flex items-center gap-3">
   <a
     href="/"
-    className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-[#d6ff3f] hover:text-[#d6ff3f]"
+    className="flex items-center gap-2 border border-line-strong px-5 py-3 text-sm transition hover:border-accent hover:text-accent-strong"
   >
     <ArrowLeft size={16} />
     WEBSITE
@@ -220,7 +301,7 @@ async function deleteProject(id: string) {
   <button
     type="button"
     onClick={handleLogout}
-    className="flex items-center gap-2 border border-white/20 px-5 py-3 text-sm transition hover:border-red-400 hover:text-red-400"
+    className="flex items-center gap-2 border border-line-strong px-5 py-3 text-sm transition hover:border-red-400 hover:text-red-600"
   >
     <LogOut size={16} />
     LOGOUT
@@ -230,10 +311,10 @@ async function deleteProject(id: string) {
         </div>
 
         {/* ADD PROJECT */}
-        <section className="border border-white/10 bg-[#0d0d0d] p-8">
+        <section className="border border-line bg-section p-8">
 
           <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center bg-[#d6ff3f] text-black">
+            <div className="flex h-10 w-10 items-center justify-center bg-accent text-primary">
               <Plus size={20} />
             </div>
 
@@ -242,16 +323,16 @@ async function deleteProject(id: string) {
                 Add New Project
               </h2>
 
-              <p className="text-sm text-white/40">
+              <p className="text-sm text-subtle">
                 Project information will be saved to MongoDB.
               </p>
             </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <section className="mt-10 border border-white/10 bg-[#0d0d0d] p-8">
+            <section className="mt-10 border border-line bg-section p-8">
   <div className="mb-8">
-    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+    <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
       PROJECT MANAGEMENT
     </p>
 
@@ -259,28 +340,28 @@ async function deleteProject(id: string) {
       Existing Projects
     </h2>
 
-    <p className="mt-2 text-sm text-white/40">
+    <p className="mt-2 text-sm text-subtle">
       Manage projects currently displayed on the website.
     </p>
   </div>
 
   <div className="space-y-4">
     {projects.length === 0 ? (
-      <p className="text-white/40">
+      <p className="text-subtle">
         No projects found.
       </p>
     ) : (
       projects.map((project) => (
         <div
           key={project._id}
-          className="flex items-center justify-between border border-white/10 bg-black p-5"
+          className="flex items-center justify-between border border-line bg-white p-5"
         >
           <div>
             <h3 className="font-bold">
               {project.title}
             </h3>
 
-            <p className="mt-1 text-sm text-white/40">
+            <p className="mt-1 text-sm text-subtle">
               {project.category} · {project.location}
             </p>
           </div>
@@ -288,7 +369,7 @@ async function deleteProject(id: string) {
           <button
             type="button"
             onClick={() => deleteProject(project._id)}
-            className="flex items-center gap-2 border border-red-500/30 px-4 py-2 text-sm font-bold text-red-400 transition hover:bg-red-500 hover:text-white"
+            className="flex items-center gap-2 border border-red-500/30 px-4 py-2 text-sm font-bold text-red-600 transition hover:bg-red-500 hover:text-ink"
           >
             <Trash2 size={16} />
             DELETE
@@ -303,7 +384,7 @@ async function deleteProject(id: string) {
             <div className="grid gap-6 md:grid-cols-2">
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Project Title
                 </label>
 
@@ -313,12 +394,12 @@ async function deleteProject(id: string) {
                   onChange={handleTitleChange}
                   placeholder="Modern Residence"
                   required
-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none transition focus:border-[#d6ff3f]"
+                  className="w-full border border-line bg-white px-4 py-3 outline-none transition focus:border-accent"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Slug
                 </label>
 
@@ -328,7 +409,7 @@ async function deleteProject(id: string) {
                   onChange={handleChange}
                   placeholder="modern-residence"
                   required
-                  className="w-full border border-white/10 bg-black px-4 py-3 text-white/50 outline-none focus:border-[#d6ff3f]"
+                  className="w-full border border-line bg-white px-4 py-3 text-muted outline-none focus:border-accent"
                 />
               </div>
 
@@ -338,7 +419,7 @@ async function deleteProject(id: string) {
             <div className="grid gap-6 md:grid-cols-2">
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Client
                 </label>
 
@@ -346,13 +427,13 @@ async function deleteProject(id: string) {
                   name="client"
                   value={form.client}
                   onChange={handleChange}
-                  placeholder="GLOARO"
-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+                  placeholder="Client name"
+                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Location
                 </label>
 
@@ -362,7 +443,7 @@ async function deleteProject(id: string) {
                   onChange={handleChange}
                   placeholder="Madurai, Tamil Nadu"
                   required
-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
                 />
               </div>
 
@@ -372,7 +453,7 @@ async function deleteProject(id: string) {
             <div className="grid gap-6 md:grid-cols-3">
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Category
                 </label>
 
@@ -381,7 +462,7 @@ async function deleteProject(id: string) {
                   value={form.category}
                   onChange={handleChange}
                   required
-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
                 >
                   <option value="">Select category</option>
                   <option value="Residential">Residential</option>
@@ -393,7 +474,7 @@ async function deleteProject(id: string) {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Year
                 </label>
 
@@ -402,12 +483,12 @@ async function deleteProject(id: string) {
                   value={form.year}
                   onChange={handleChange}
                   placeholder="2026"
-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-sm text-white/60">
+                <label className="mb-2 block text-sm text-muted">
                   Status
                 </label>
 
@@ -415,7 +496,7 @@ async function deleteProject(id: string) {
                   name="status"
                   value={form.status}
                   onChange={handleChange}
-                  className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+                  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent"
                 >
                   <option value="Completed">Completed</option>
                   <option value="Ongoing">Ongoing</option>
@@ -427,7 +508,7 @@ async function deleteProject(id: string) {
 
             {/* DESCRIPTION */}
             <div>
-              <label className="mb-2 block text-sm text-white/60">
+              <label className="mb-2 block text-sm text-muted">
                 Description
               </label>
 
@@ -438,52 +519,87 @@ async function deleteProject(id: string) {
                 placeholder="Describe the project..."
                 required
                 rows={5}
-                className="w-full resize-none border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
+                className="w-full resize-none border border-line bg-white px-4 py-3 outline-none focus:border-accent"
               />
             </div>
 
             {/* COVER IMAGE */}
             <div>
-              <label className="mb-2 flex items-center gap-2 text-sm text-white/60">
+              <label className="mb-2 flex items-center gap-2 text-sm text-muted">
                 <ImageIcon size={16} />
                 Cover Image
               </label>
 
-              <input
-                name="coverImage"
-                value={form.coverImage}
-                onChange={handleChange}
-                placeholder="/images/projects/residence-1.jpg"
-                className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
-              />
+              
+<input
+  type="file"
+  accept="image/jpeg,image/png,image/webp,image/gif"
+  onChange={handleCoverUpload}
+  disabled={coverUploading}
+  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent disabled:opacity-50"
+/>
 
-              <p className="mt-2 text-xs text-white/30">
-                For now use an image path from public/images.
-              </p>
+{coverUploading && (
+  <p className="mt-2 text-sm text-accent-strong">
+    Uploading cover image...
+  </p>
+)}
+
+{form.coverImage && (
+  <div className="mt-3">
+    <img
+      src={form.coverImage}
+      alt="Cover preview"
+      className="h-40 w-full max-w-md object-cover"
+    />
+    <p className="mt-2 break-all text-xs text-muted">
+      {form.coverImage}
+    </p>
+  </div>
+)}
+
             </div>
 
             {/* GALLERY IMAGES */}
             <div>
-              <label className="mb-2 block text-sm text-white/60">
+              <label className="mb-2 block text-sm text-muted">
                 Gallery Images
               </label>
 
-              <input
-                name="images"
-                value={form.images}
-                onChange={handleChange}
-                placeholder="/images/projects/img1.jpg, /images/projects/img2.jpg"
-                className="w-full border border-white/10 bg-black px-4 py-3 outline-none focus:border-[#d6ff3f]"
-              />
+              
+<input
+  type="file"
+  accept="image/jpeg,image/png,image/webp,image/gif"
+  multiple
+  onChange={handleGalleryUpload}
+  disabled={galleryUploading}
+  className="w-full border border-line bg-white px-4 py-3 outline-none focus:border-accent disabled:opacity-50"
+/>
 
-              <p className="mt-2 text-xs text-white/30">
-                Separate multiple image paths with commas.
-              </p>
+{galleryUploading && (
+  <p className="mt-2 text-sm text-accent-strong">
+    Uploading gallery images...
+  </p>
+)}
+
+{form.images && (
+  <div className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+    {form.images.split(",").filter(Boolean).map((url) => (
+      <img
+        key={url.trim()}
+        src={url.trim()}
+        alt="Project gallery"
+        className="h-28 w-full object-cover"
+      />
+    ))}
+  </div>
+)}
+
             </div>
 
             {/* MESSAGE */}
             {message && (
-              <div className="border border-white/10 bg-black px-4 py-3 text-sm text-[#d6ff3f]">
+              <div className="border border-line bg-white px-4 py-3 text-sm text-accent-strong">
                 {message}
               </div>
             )}
@@ -491,8 +607,8 @@ async function deleteProject(id: string) {
             {/* SUBMIT */}
             <button
               type="submit"
-              disabled={loading}
-              className="flex items-center gap-3 bg-[#d6ff3f] px-7 py-4 font-bold text-black transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50"
+         disabled={loading || coverUploading || galleryUploading}
+              className="flex items-center gap-3 bg-accent px-7 py-4 font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               <Plus size={18} />
 
@@ -502,10 +618,10 @@ async function deleteProject(id: string) {
           </form>
 
 {/* CUSTOMER INQUIRIES */}
-<section className="mt-10 border border-white/10 bg-[#0d0d0d] p-8">
+<section className="mt-10 border border-line bg-section p-8">
 
   <div className="mb-8">
-    <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#d6ff3f]">
+    <p className="text-xs font-bold uppercase tracking-[0.3em] text-accent-strong">
       CUSTOMER INQUIRIES
     </p>
 
@@ -513,7 +629,7 @@ async function deleteProject(id: string) {
       Project Enquiries
     </h2>
 
-    <p className="mt-2 text-sm text-white/40">
+    <p className="mt-2 text-sm text-subtle">
       Messages submitted through the website contact form.
     </p>
   </div>
@@ -521,14 +637,14 @@ async function deleteProject(id: string) {
   <div className="space-y-4">
 
     {inquiries.length === 0 ? (
-      <p className="text-white/40">
+      <p className="text-subtle">
         No inquiries found.
       </p>
     ) : (
       inquiries.map((inquiry) => (
         <div
           key={inquiry._id}
-          className="border border-white/10 bg-black p-6"
+          className="border border-line bg-white p-6"
         >
 
           <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
@@ -541,31 +657,31 @@ async function deleteProject(id: string) {
                   {inquiry.name}
                 </h3>
 
-                <span className="border border-[#d6ff3f]/30 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-[#d6ff3f]">
+                <span className="border border-accent/30 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-strong">
                   {inquiry.status}
                 </span>
 
               </div>
 
-              <div className="mt-3 space-y-1 text-sm text-white/50">
+              <div className="mt-3 space-y-1 text-sm text-muted">
 
                 <p>
                   Email:{" "}
-                  <span className="text-white/80">
+                  <span className="text-body">
                     {inquiry.email}
                   </span>
                 </p>
 
                 <p>
                   Phone:{" "}
-                  <span className="text-white/80">
+                  <span className="text-body">
                     {inquiry.phone}
                   </span>
                 </p>
 
                 <p>
                   Project Type:{" "}
-                  <span className="text-white/80">
+                  <span className="text-body">
                     {inquiry.projectType}
                   </span>
                 </p>
@@ -574,19 +690,19 @@ async function deleteProject(id: string) {
 
             </div>
 
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-faint">
               {new Date(inquiry.createdAt).toLocaleString()}
             </p>
 
           </div>
 
-          <div className="mt-5 border-t border-white/10 pt-5">
+          <div className="mt-5 border-t border-line pt-5">
 
-            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-white/30">
+            <p className="mb-2 text-xs font-bold uppercase tracking-widest text-faint">
               Project Details
             </p>
 
-            <p className="leading-7 text-white/70">
+            <p className="leading-7 text-body">
               {inquiry.details}
             </p>
 
